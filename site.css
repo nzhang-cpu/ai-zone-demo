@@ -2745,3 +2745,26 @@ html.kd-frame body { overflow: auto; background: var(--gradient-page); }
 .studio-bar .studio-link { margin-left: auto; height: 34px; padding: 0 14px; display: inline-flex; align-items: center; border-radius: 999px; background: rgba(255,255,255,.14); color: #fff; font-size: 12px; font-weight: 600; text-decoration: none; }
 .studio-bar .studio-link:hover { background: rgba(255,255,255,.24); }
 .studio-bar .kd-open { margin-left: 8px; }
+
+.article-body ul {
+  margin: 0 0 14px;
+  padding: 0 0 0 22px;
+  list-style: disc;
+}
+
+.article-body ul li {
+  margin: 0 0 8px;
+  padding-left: 4px;
+  font-size: 15px;
+  line-height: 26px;
+  color: var(--ui-body);
+}
+
+.article-body ul li::marker {
+  color: var(--brand-navy-deep);
+}
+
+.article-body ul li strong {
+  color: var(--brand-navy-deep);
+  font-weight: 600;
+}

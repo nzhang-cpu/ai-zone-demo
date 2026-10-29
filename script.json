@@ -229,7 +229,7 @@
       },
       {
         "voice": "With AI Zone, we can turn a static knowledge article into a dynamic, personalized experience.",
-        "behavior": "Scroll back to the top. The customer clicks the AI Helper box.",
+        "behavior": "Scroll back to the top. The customer clicks the AI Zone box.",
         "audio": {
           "id": "f30ec0a68c6d1808",
           "url": "/audio-cache/f30ec0a68c6d1808.mp3",
@@ -315,7 +315,7 @@
       },
       {
         "voice": "Here, the customer is reading about bank disputes.",
-        "behavior": "The customer types a question into the AI Helper: “Why hasn’t my refund arrived?”",
+        "behavior": "The customer types a question into the AI Zone: “Why hasn’t my refund arrived?”",
         "audio": {
           "id": "a65a9877cb27cef8",
           "url": "/audio-cache/a65a9877cb27cef8.mp3",
@@ -451,97 +451,92 @@
         }
       },
       {
-        "voice": "The AI helper understands the customer’s question and generates a focused summary using the relevant knowledge content.",
+        "voice": "AI Zone understands the customer’s question and generates a focused summary using the relevant knowledge content.",
         "behavior": "Cursor browses the new summary, then hovers source 1 to show the knowledge snippet preview.",
         "audio": {
-          "id": "0b06f218a1961783",
-          "url": "/audio-cache/0b06f218a1961783.mp3",
-          "duration": 6.699,
+          "id": "5d077296bb1ae97c",
+          "url": "/audio-cache/5d077296bb1ae97c.mp3",
+          "duration": 6.037,
           "words": [
             {
-              "w": "The",
-              "start": 0.058,
-              "end": 0.163
-            },
-            {
               "w": "AI",
-              "start": 0.244,
-              "end": 0.615
+              "start": 0.035,
+              "end": 0.325
             },
             {
-              "w": "helper",
-              "start": 0.673,
-              "end": 0.987
+              "w": "Zone",
+              "start": 0.395,
+              "end": 0.627
             },
             {
               "w": "understands",
-              "start": 1.057,
-              "end": 1.649
+              "start": 0.685,
+              "end": 1.242
             },
             {
               "w": "the",
-              "start": 1.695,
-              "end": 1.765
+              "start": 1.289,
+              "end": 1.358
             },
             {
               "w": "customer's",
-              "start": 1.8,
-              "end": 2.241
+              "start": 1.405,
+              "end": 1.858
             },
             {
               "w": "question",
-              "start": 2.287,
-              "end": 2.775
+              "start": 1.916,
+              "end": 2.345
             },
             {
               "w": "and",
-              "start": 3.019,
-              "end": 3.216
+              "start": 2.415,
+              "end": 2.531
             },
             {
               "w": "generates",
-              "start": 3.274,
-              "end": 3.727
+              "start": 2.601,
+              "end": 3.065
             },
             {
               "w": "a",
-              "start": 3.762,
-              "end": 3.796
+              "start": 3.1,
+              "end": 3.123
             },
             {
               "w": "focused",
-              "start": 3.866,
-              "end": 4.272
+              "start": 3.216,
+              "end": 3.657
             },
             {
               "w": "summary",
-              "start": 4.331,
-              "end": 4.748
+              "start": 3.727,
+              "end": 4.122
             },
             {
               "w": "using",
-              "start": 4.865,
-              "end": 5.143
+              "start": 4.214,
+              "end": 4.47
             },
             {
               "w": "the",
-              "start": 5.19,
-              "end": 5.259
+              "start": 4.516,
+              "end": 4.586
             },
             {
               "w": "relevant",
-              "start": 5.317,
-              "end": 5.7
+              "start": 4.644,
+              "end": 5.027
             },
             {
               "w": "knowledge",
-              "start": 5.735,
-              "end": 6.084
+              "start": 5.062,
+              "end": 5.422
             },
             {
               "w": "content.",
-              "start": 6.13,
-              "end": 6.699
+              "start": 5.457,
+              "end": 6.037
             }
           ]
         }

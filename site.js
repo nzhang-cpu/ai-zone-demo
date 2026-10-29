@@ -1,8 +1,8 @@
 const ARTICLES = [
   {
     id: "respond-dispute",
-    title: "What happens after you open a bank dispute",
-    path: "Help / Bank disputes / After you file",
+    title: "Bank disputes: how they work and what to expect",
+    path: "Help / Bank disputes / How disputes work",
     topic: "Disputes",
     updated: "May 2026",
     snippet:
@@ -12,10 +12,10 @@ const ARTICLES = [
       "If you were also charged twice, the extra payment is a different record. A refund of that extra charge does not close this dispute."
     ],
     steps: [
-      "Keep the letter or app notice from your bank.",
-      "Note which charge the bank is asking about — the date and the amount.",
-      "If you already have a refund of a different charge, keep that receipt.",
-      "Wait for the bank’s update. Status shows with your bank, not in a separate Northline inbox."
+      "Find the dispute notice from your bank.",
+      "Match the disputed charge by its date and amount.",
+      "Keep the receipt for any refund of a different charge.",
+      "Wait for your bank’s decision."
     ],
     tags: ["dispute", "chargeback", "evidence", "respond", "dashboard", "charged", "twice"]
   },
@@ -789,7 +789,16 @@ function articleContentParts(article) {
       plain(". It will not look like a new deposit from Northline.")
     ];
   }
-  if (article.id === "respond-dispute" || article.id === "inquiry-vs-dispute") {
+  if (article.id === "respond-dispute") {
+    return [
+      plain("This article explains how a "),
+      marked("bank dispute"),
+      plain(" works after you open one: what your bank and Northline each do, how long the review takes, and how a "),
+      marked("refund"),
+      plain(" relates to it.")
+    ];
+  }
+  if (article.id === "inquiry-vs-dispute") {
     return [
       plain("Your bank is asking about "),
       marked("one charge"),
@@ -1782,7 +1791,7 @@ const SCREEN_BLUEPRINT = {
     name: "Home",
     placement: "float",
     quiet: true,
-    label: "AI Helper",
+    label: "AI Zone",
     askPlaceholder: "Ask a question…",
     note: "Floats centered along the bottom, and wider than the other cards. It starts as an ask field, with no summary until you ask or the page changes."
   },
@@ -1790,7 +1799,7 @@ const SCREEN_BLUEPRINT = {
     name: "Search result",
     placement: "below-search",
     quiet: false,
-    label: "AI Helper",
+    label: "AI Zone",
     askPlaceholder: "Ask a follow-up question…",
     note: "Sits under the results heading, above the list, in one column."
   },
@@ -1798,7 +1807,7 @@ const SCREEN_BLUEPRINT = {
     name: "Knowledge article",
     placement: "below-header",
     quiet: false,
-    label: "AI Helper",
+    label: "AI Zone",
     askPlaceholder: "Ask a follow-up question…",
     note: "Sits between the article title and the article body."
   },
@@ -1806,7 +1815,7 @@ const SCREEN_BLUEPRINT = {
     name: "Action",
     placement: "rail",
     quiet: false,
-    label: "AI Helper",
+    label: "AI Zone",
     askPlaceholder: "Ask a follow-up question…",
     note: "Sticks beside the automation form."
   },
@@ -1814,7 +1823,7 @@ const SCREEN_BLUEPRINT = {
     name: "Submit a case",
     placement: "rail",
     quiet: false,
-    label: "AI Helper",
+    label: "AI Zone",
     askPlaceholder: "Ask a follow-up question…",
     note: "Sticks beside the case form."
   }
@@ -1860,9 +1869,9 @@ function applySummaryChrome(card) {
   card.classList.toggle("is-quiet", quiet);
   card.dataset.summary = quiet ? "off" : card.dataset.summary || "on";
   card.dataset.ask = quiet ? "ask" : card.dataset.ask || "follow-up";
-  card.setAttribute("aria-label", "AI Helper");
+  card.setAttribute("aria-label", "AI Zone");
   const label = card.querySelector("[data-summary-label]");
-  if (label) label.textContent = "AI Helper";
+  if (label) label.textContent = "AI Zone";
   const input = card.querySelector("[data-summary-ask] input");
   if (input) {
     input.placeholder = spec.askPlaceholder;
@@ -1875,17 +1884,17 @@ function openSummary(card) {
   card.classList.remove("is-quiet");
   card.dataset.summary = "on";
   if (card.dataset.ask !== "hidden") card.dataset.ask = "follow-up";
-  card.setAttribute("aria-label", "AI Helper");
+  card.setAttribute("aria-label", "AI Zone");
 }
 
 const SUMMARY_HTML = `
-<section class="ai-card case-assist" aria-busy="false" aria-label="AI Helper">
+<section class="ai-card case-assist" aria-busy="false" aria-label="AI Zone">
   <div class="ai-card__body">
     <div class="ai-card__label" data-part="label">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"></path>
       </svg>
-      <span data-summary-label>AI Helper</span>
+      <span data-summary-label>AI Zone</span>
     </div>
     <div data-part="body">
       <div class="assist-shimmer" data-part="generating" data-summary-shimmer hidden>
@@ -2571,7 +2580,7 @@ function createLiveSummary(card) {
     generating = false;
     card.classList.remove("is-generating");
     card.setAttribute("aria-busy", "false");
-    if (flags.label) labelEl.textContent = "AI Helper";
+    if (flags.label) labelEl.textContent = "AI Zone";
     if (flags.meta) metaEl.textContent = options.meta || "";
     card.dataset.phase = options.phase || "ready";
     if (statusEl && parts) statusEl.textContent = parts.map((part) => part.t).join("");
@@ -2618,7 +2627,7 @@ function createLiveSummary(card) {
     if (options.offers) setOffers(options.offers);
     else if (options.clearOffers) setOffers([]);
     shapeFor(flags.body ? parts : null, options.ask);
-    if (flags.label) labelEl.textContent = "AI Helper";
+    if (flags.label) labelEl.textContent = "AI Zone";
     if (!parts || !flags.body) {
       generating = false;
       card.classList.remove("is-generating", "is-rewriting");
@@ -3024,8 +3033,50 @@ function chargedTwiceArticle(article) {
     <p>That review continues on its own. A refund of the other charge does not close it. If something on this page does not match what you see, <a href="submit.html" style="color: var(--brand-navy-deep); font-weight: 600;">submit a case</a> and tell us the date and amount on your statement.</p>`;
 }
 
+function disputeArticle(article) {
+  const steps = article.steps.map((step) => escapeHtml(step));
+  const stepList = steps
+    .map(
+      (step, index) =>
+        `<li><button type="button" class="step-hit" data-step="${index}"><span class="step-num">${index + 1}</span><span>${step}</span></button></li>`
+    )
+    .join("");
+  return `
+    <p>A bank dispute starts when you ask your bank to review a charge on your card. This article explains what happens next, what Northline does while the review is open, and how a refund fits in.</p>
+    <h2>Overview</h2>
+    <p>Your bank contacts Northline about one specific charge and asks for the details of that sale. Northline sends its records to the bank, and the bank decides the outcome. You do not need to send anything to Northline yourself.</p>
+    <p>The dispute applies to the single charge you named. It does not cover other payments, even for the same order or the same amount.</p>
+    <h2>How the dispute process works</h2>
+    <p>Disputes usually follow the same path. The timing depends on your bank and your card network, so the dates below are typical, not guaranteed.</p>
+    <ul>
+      <li><strong>You contact your bank.</strong> The bank opens the dispute and may put a temporary credit on your account.</li>
+      <li><strong>Your bank notifies Northline.</strong> Northline receives the dispute, usually within a few days.</li>
+      <li><strong>Northline responds.</strong> We send the order record, the payment details and any delivery information to your bank within the response window.</li>
+      <li><strong>Your bank reviews.</strong> The review commonly takes 30 to 90 days.</li>
+      <li><strong>You are told the result.</strong> Your bank decides and notifies you directly.</li>
+    </ul>
+    <h2>What Northline does while a dispute is open</h2>
+    <p>Northline replies to your bank on time and keeps the order record available for the review. We do not contact you for evidence unless your bank asks for something only you can provide, such as a signed statement.</p>
+    <p>Status updates come from your bank, not from a separate Northline inbox. If you want to know where a dispute stands, ask your bank.</p>
+    <h2>What you need to do</h2>
+    <ol class="article-steps">${stepList}</ol>
+    <p>Keep your bank’s notice and your statement together until the dispute is closed. If your bank asks you for a document, reply to your bank by the date on its notice. A late answer can end the review early.</p>
+    <h2>Disputes and refunds are separate</h2>
+    <p>A refund returns one payment to your card. A dispute asks your bank to review one charge. They are two different reviews and one does not close the other.</p>
+    <p>If you were charged twice, the extra payment is its own record. Refunding that payment does not cancel a dispute you opened on the other charge, and the dispute does not stop the refund. A refund usually shows on your statement in 5 to 10 business days.</p>
+    <h2>Possible outcomes</h2>
+    <p>If your bank decides in your favor, the charge is reversed and the temporary credit becomes permanent. If it decides in Northline’s favor, the temporary credit is taken back. Your bank will tell you which one applies.</p>
+    <p>Do not dispute a charge that has already been refunded. Doing so can lead to the amount being returned to you twice, and the second return may be reversed later.</p>
+    <h2>Frequently asked questions</h2>
+    <p><strong>Can I cancel a dispute?</strong> Yes, but only through your bank. Ask them to withdraw it.</p>
+    <p><strong>Will the charge disappear from my statement right away?</strong> Not always. Your bank decides whether to show a temporary credit while the review is open.</p>
+    <p><strong>Does Northline need anything from me?</strong> Usually not. If something is missing, we will tell you.</p>
+    <p>If something on this page does not match what you see, <a href="submit.html" style="color: var(--brand-navy-deep); font-weight: 600;">submit a case</a> and include the order or payment id.</p>`;
+}
+
 function longArticleHtml(article) {
   if (article.id === "duplicate-charge") return chargedTwiceArticle(article);
+  if (article.id === "respond-dispute") return disputeArticle(article);
   const title = escapeHtml(article.title);
   const topic = escapeHtml(article.topic);
   const snippet = escapeHtml(article.snippet);

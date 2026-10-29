@@ -65,7 +65,7 @@
       <div class="kd-results">
         <div class="kd-meta">About 2,410,000 results (0.38 seconds)</div>
         <div class="kd-res"><div class="url"><span class="fav alt">W</span><div>wikipedia.org<br><small>› wiki › Chargeback</small></div></div><h3>Chargeback - Wikipedia</h3><p>A chargeback is a return of money to a payer, ordered by a bank or card issuer after a customer disputes a transaction…</p></div>
-        <div class="kd-res is-target" data-kd-target><div class="url"><span class="fav">N</span><div>help.northline.test<br><small>› Help › Bank disputes › After you file</small></div></div><h3>What happens after you open a bank dispute — Northline Help</h3><p>Your bank asks Northline about one charge. That review stays on that charge even if another payment for the same order is refunded.</p></div>
+        <div class="kd-res is-target" data-kd-target><div class="url"><span class="fav">N</span><div>help.northline.test<br><small>› Help › Bank disputes › How disputes work</small></div></div><h3>Bank disputes: how they work and what to expect — Northline Help</h3><p>Your bank asks Northline about one charge. That review stays on that charge even if another payment for the same order is refunded.</p></div>
         <div class="kd-res"><div class="url"><span class="fav alt">C</span><div>consumerfinance.gov<br><small>› ask-cfpb › what-is-a-chargeback</small></div></div><h3>What is a chargeback? | Consumer Financial Protection Bureau</h3><p>If you dispute a charge on your credit card, the card issuer may reverse the transaction while the dispute is reviewed…</p></div>
       </div>
     </div>
@@ -178,7 +178,7 @@
     [14.7, "With AI Zone, we can turn a static knowledge article into a dynamic, personalized experience."],
     [21.1, "Here, the customer is reading about bank disputes."],
     [24.2, "Instead of reading through the entire article, they simply ask why their refund hasn’t arrived."],
-    [29.5, "The AI helper understands the customer’s question and generates a focused summary using the relevant knowledge content."],
+    [29.5, "AI Zone understands the customer’s question and generates a focused summary using the relevant knowledge content."],
     [36.3, "Notice that we’re not just summarizing the article."],
     [39.0, "We’re highlighting the information that matters to this customer, based on their specific situation."],
     [44.7, "This helps customers understand the next step faster, without needing to search through multiple articles or contact a support agent."],
