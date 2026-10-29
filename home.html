@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Northline Help Center</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23020642'/%3E%3Cpath d='M8 17.5l5 5 11-12' fill='none' stroke='white' stroke-width='2.4'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./tokens.css" />
+    <link rel="stylesheet" href="./site.css?v=55" />
+  </head>
+  <body data-page="home" data-summary-placement="float">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 3l1.6 4.8L18.5 9.5 13.6 11 12 16l-1.6-5L5.5 9.5 10.4 7.8 12 3z" />
+          </svg>
+        </span>
+        Northline Help
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="search.html">Articles</a>
+        <a class="btn-primary" href="submit.html">Submit a case</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <div class="summary-frame">
+        <div class="summary-main">
+        <section class="hero">
+          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Support is online</p>
+          <h1>How can we help?</h1>
+          <p class="lede">Tell us what happened. You don’t have to know yet if this is a refund, a bank dispute, or a missing credit.</p>
+
+          <form class="search-shell" data-search-form role="search">
+            <div class="search-top">
+              <div class="search-input-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" />
+                </svg>
+                <input type="search" name="q" placeholder="I was charged twice" aria-label="Search help articles" autocomplete="off" />
+              </div>
+              <button type="submit" class="btn-send" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 2L11 13" /><path d="M22 2L15 22L11 13L2 9L22 2Z" />
+                </svg>
+              </button>
+            </div>
+            <div class="suggest" data-suggest></div>
+          </form>
+
+          <div class="hero-chips">
+            <button type="button" class="chip-theme" data-query="charged twice">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z" />
+              </svg>
+              Charged twice
+            </button>
+            <button type="button" class="chip-theme" data-query="refund not showing">My refund isn’t here</button>
+            <button type="button" class="chip-theme" data-query="dispute reason code">I opened a bank dispute</button>
+            <button type="button" class="chip-theme" data-query="refund a payment">Refund the extra charge</button>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="topics-label">
+          <h2 class="section-label" id="topics-label">Browse by topic</h2>
+          <div class="topic-grid">
+            <a class="topic-card" href="search.html?topic=Disputes">
+              <span class="topic-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 8v5" /><path d="M12 16h.01" /><circle cx="12" cy="12" r="9" />
+                </svg>
+              </span>
+              <h2>Bank disputes</h2>
+              <p>A charge you asked your bank to review, and what happens after you open it.</p>
+            </a>
+            <a class="topic-card" href="search.html?topic=Payouts">
+              <span class="topic-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="6" width="18" height="12" rx="2" /><path d="M3 10h18" />
+                </svg>
+              </span>
+              <h2>Waiting on money</h2>
+              <p>A refund or credit that has not shown up on your statement yet.</p>
+            </a>
+            <a class="topic-card" href="search.html?topic=Verification">
+              <span class="topic-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 3l8 4v6c0 5-3.5 7.5-8 8-4.5-.5-8-3-8-8V7l8-4z" />
+                </svg>
+              </span>
+              <h2>Your account</h2>
+              <p>The email on the order, a name check, and documents we asked you to send.</p>
+            </a>
+            <a class="topic-card" href="search.html?topic=Refunds">
+              <span class="topic-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 12a9 9 0 1 0 3-6.7" /><path d="M3 4v5h5" />
+                </svg>
+              </span>
+              <h2>Refunds</h2>
+              <p>Full and partial refunds, and what you see on your card statement.</p>
+            </a>
+            <a class="topic-card" href="search.html?topic=Security">
+              <span class="topic-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" />
+                </svg>
+              </span>
+              <h2>Sign-in & security</h2>
+              <p>Two-factor authentication, recovery codes, and a lost phone.</p>
+            </a>
+            <a class="topic-card" href="submit.html">
+              <span class="topic-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 6h16v12H4z" /><path d="M4 7l8 6 8-6" />
+                </svg>
+              </span>
+              <h2>Contact support</h2>
+              <p>When the articles don’t cover what you’re looking at, send a case in your own words.</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="popular-label">
+          <h2 class="section-label" id="popular-label">Popular articles</h2>
+          <div class="panel" id="popular-list"></div>
+        </section>
+
+        <section class="help-band">
+          <div>
+            <h2>Still stuck?</h2>
+            <p>Submit a case. Use that when the articles and the refund request don’t cover what you’re looking at.</p>
+          </div>
+          <a class="btn-primary" href="submit.html">Submit a case</a>
+        </section>
+        </div>
+        <div data-summary-slot></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <span>Northline Help Center</span>
+      <nav aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="search.html">Articles</a>
+        <a href="submit.html">Submit a case</a>
+      </nav>
+    </footer>
+    <script src="./site.js?v=56"></script>
+  </body>
+</html>

@@ -2397,9 +2397,9 @@ function mountTabs() {
     // Demo 1 (search) tabs, hidden for the case + automation demo:
     // ["home", "index.html", "Home", "help.northline.test"],
     // ["search", "search.html?q=charged+twice", "Search result", "help.northline.test/search?q=charged+twice"],
-    ["article", "article.html?id=duplicate-charge", "Knowledge article", "help.northline.test/articles/duplicate-charges"],
+    ["article", "article.html?id=respond-dispute&demo=1", "Knowledge article", "help.northline.test/articles/duplicate-charges"],
     // Submit a case and Action are one tab; the case hands off to the action page.
-    ["submit", "submit.html", "Case + automation", "help.northline.test/cases/new"]
+    ["submit", "submit.html?demo=1", "Case + automation", "help.northline.test/cases/new"]
     // ["action", "action.html", "Action", "help.northline.test/actions/new"]
   ];
   const tabFor = { action: "submit" };
