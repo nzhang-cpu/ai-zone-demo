@@ -1112,6 +1112,7 @@ function defaultCites() {
 
 function citesForSummary(parts) {
   const page = document.body.dataset.page;
+  if (page === "article") return window.__kaCites ? window.__kaCites(parts) : [];
   if (page !== "search" && page !== "action" && page !== "submit") return [];
   const text = parts.map((part) => part.t || "").join(" ").toLowerCase();
   const named = ARTICLES.filter((article) => text.includes(article.title.toLowerCase())).map((article) => article.id);
@@ -1504,6 +1505,7 @@ function submittedParts(info) {
 function initCaseAssist(form) {
   const summary = createLiveSummary(ensureSummarySlot());
   if (!summary) return { invalid() {}, submitted() {} };
+  window.__caseSummary = summary;
 
   let locked = false;
   let frozen = null;
@@ -2385,17 +2387,27 @@ function initBlueprintPage() {
 
 function mountTabs() {
   if (document.querySelector(".studio")) return;
+  // Embedded by the walkthrough: render the bare page, no browser chrome.
+  if (window.self !== window.top && /[?&]frame=1/.test(window.location.search)) {
+    document.documentElement.classList.add("kd-frame");
+    return;
+  }
   const page = document.body.dataset.page || "";
   const tabs = [
-    ["home", "index.html", "Home", "help.northline.test"],
-    ["search", "search.html?q=charged+twice", "Search result", "help.northline.test/search?q=charged+twice"],
+    // Demo 1 (search) tabs, hidden for the case + automation demo:
+    // ["home", "index.html", "Home", "help.northline.test"],
+    // ["search", "search.html?q=charged+twice", "Search result", "help.northline.test/search?q=charged+twice"],
     ["article", "article.html?id=duplicate-charge", "Knowledge article", "help.northline.test/articles/duplicate-charges"],
-    ["submit", "submit.html", "Submit a case", "help.northline.test/cases/new"],
-    ["action", "action.html", "Action", "help.northline.test/actions/new"]
+    // Submit a case and Action are one tab; the case hands off to the action page.
+    ["submit", "submit.html", "Case + automation", "help.northline.test/cases/new"]
+    // ["action", "action.html", "Action", "help.northline.test/actions/new"]
   ];
+  const tabFor = { action: "submit" };
   const address = page === "blueprint"
     ? "help.northline.test/blueprint"
-    : (tabs.find(([id]) => id === page) || tabs[0])[3];
+    : page === "action"
+      ? "help.northline.test/actions/new"
+      : (tabs.find(([id]) => id === page) || tabs[0])[3];
 
   const bar = document.createElement("div");
   bar.className = "studio-bar";
@@ -2406,12 +2418,12 @@ function mountTabs() {
     const link = document.createElement("a");
     link.href = href;
     link.textContent = label;
-    if (id === page) link.setAttribute("aria-current", "page");
+    if (id === (tabFor[page] || page)) link.setAttribute("aria-current", "page");
     nav.appendChild(link);
   });
   bar.appendChild(nav);
-  mountTestPlan(bar);
-  mountBlueprint(bar);
+  // mountTestPlan(bar); // hidden for the demos
+  // mountBlueprint(bar); // hidden for the demos
 
   const chrome = document.createElement("div");
   chrome.className = "browser-chrome";
@@ -2679,7 +2691,7 @@ function createLiveSummary(card) {
     const parts = askHandler
       ? askHandler(value)
       : [plain("On “"), marked(clipText(value, 80)), plain("”.")];
-    answerWith(parts);
+    answerWith(parts, parts.meta);
   });
 
   card.querySelectorAll("[data-assist-helpful]").forEach((button) => {
@@ -3117,7 +3129,7 @@ function initArticlePage() {
     meta: `From this article · Updated ${article.updated}`,
     phase: "landed"
   });
-  pause();
+  if (!/[?&]demo=1/.test(window.location.search)) pause();
   root.querySelectorAll("[data-step]").forEach((button) => {
     button.addEventListener("click", () => {
       root.querySelectorAll("[data-step]").forEach((other) => other.setAttribute("aria-pressed", "false"));
@@ -3133,8 +3145,39 @@ function initArticlePage() {
       });
     });
   });
+  const navBtn = document.querySelector(".nav .btn-primary");
+  if (navBtn && !document.querySelector(".acct-pill")) {
+    const pill = document.createElement("span");
+    pill.className = "acct-pill";
+    pill.innerHTML = '<i>JH</i>Jonah Hale';
+    navBtn.before(pill);
+  }
+  window.__kaSummary = summary;
+  window.__kaParts = () => articleContentParts(article);
+  window.__kaCites = (parts) => /business days|Oct 31/.test(parts.map((part) => part.t).join(" "))
+    ? ["refund-not-received", "refund-and-dispute"]
+    : [];
   summary.setAsk((value) => {
     const q = value.toLowerCase();
+    if (/refund/.test(q) && /arriv|receiv|haven|yet|where|show|missing/.test(q)) {
+      const parts = [
+        plain("Your refund of "),
+        marked("$86.00"),
+        plain(" for order "),
+        marked("#1044"),
+        plain(" was sent on Oct 24. It should reach your Visa ending 4417 between "),
+        marked("Oct 31 and Nov 6"),
+        plain(", under "),
+        marked("NORTHLINE*ORDER"),
+        plain(". Your bank dispute on the other charge is "),
+        marked("still open"),
+        plain(". Reply to your bank by "),
+        marked("Nov 5"),
+        plain(", and do not dispute the refunded charge.")
+      ];
+      parts.meta = "Read from your account · Order #1044 · just now";
+      return parts;
+    }
     if (articleQuestion && /refund|close|dispute/.test(q)) return articleQuestion.parts();
     const topicQuestion = questions[article.topic];
     if (topicQuestion && /deadline|hold|email|upload|refund|code|lost/.test(q)) return topicQuestion.parts();
@@ -3436,7 +3479,7 @@ function initActionPage() {
         remind: { id: "who", label: "Who hears back?", parts: () => [plain("We’ll email "), marked("the address on this form"), plain(" about the bank dispute on this charge.")] },
         refund: { id: "now", label: "When will I see the refund?", parts: () => [plain("The request sends now. The card usually shows it in "), marked("5 to 10 business days"), plain(".")] },
         reset: { id: "signout", label: "Will I be signed out?", parts: () => [plain("Yes. Every session ends, and you need "), marked("a new authenticator"), plain(" to get back in.")] }
-      }[draft.action] || { id: "safe", label: "Does anything send before I confirm?", parts: () => [plain("No. "), marked("Run action"), plain(" is the only control that sends it.")] };
+      }[draft.action] || { id: "safe", label: "Does anything send before I confirm?", parts: () => [plain("No. "), marked("Submit request"), plain(" is the only control that sends it.")] };
       offers.push({ ...specific, kind: "question", onOpen() { asked.add(specific.id); } });
     }
     summary.reply({ parts, ask: "follow-up", offers, meta, phase: "drafting" });
@@ -3480,7 +3523,7 @@ function initActionPage() {
       id: "safe",
       kind: "question",
       label: "Does anything send before I confirm?",
-      parts: () => [plain("No. "), marked("Run action"), plain(" is the only control that sends it.")]
+      parts: () => [plain("No. "), marked("Submit request"), plain(" is the only control that sends it.")]
     };
   });
 
@@ -3530,20 +3573,31 @@ function initActionPage() {
       phase: "submitted"
     });
     const card = document.getElementById("action-card");
+    const refunding = draft.action === "refund";
+    const delay = window.__actionDelay ?? 2400;
     card.innerHTML = `
-      <div class="success">
-        <div class="success-mark" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"></path></svg>
-        </div>
-        <h2>Request sent</h2>
-        <p>${escapeHtml(ACTION_LABELS[draft.action])} is in for ${escapeHtml(draft.email)}.</p>
-        <div class="case-id">${runId}</div>
-        <div class="success-actions">
-          <a class="btn-secondary" href="index.html">Back to help center</a>
-          <button type="button" class="btn-primary" id="another-action">Send another</button>
-        </div>
+      <div class="result">
+        <h2>${refunding ? "Processing your refund" : "Processing your request"}</h2>
+        <p>${refunding
+          ? `Checking order ${escapeHtml(draft.reference || "")} and sending $86.00 back to your card.`
+          : `${escapeHtml(ACTION_LABELS[draft.action])} for ${escapeHtml(draft.email)}.`}</p>
+        <div class="result-bar" style="--wait: ${delay}ms"><i></i></div>
       </div>`;
-    document.getElementById("another-action").addEventListener("click", () => window.location.reload());
+    window.setTimeout(() => {
+      card.innerHTML = `
+        <div class="result">
+          <h2>${refunding ? "$86.00 refunded" : "Request sent"}</h2>
+          <p>${refunding
+            ? `Order ${escapeHtml(draft.reference || "")} · back on your card in 5 to 10 business days.`
+            : `${escapeHtml(ACTION_LABELS[draft.action])} is in for ${escapeHtml(draft.email)}.`}</p>
+          <p class="result-ref">Confirmation ${runId}</p>
+          <div class="success-actions">
+            <a class="btn-secondary" href="index.html">Back to help center</a>
+            <button type="button" class="btn-primary" id="another-action">Send another</button>
+          </div>
+        </div>`;
+      document.getElementById("another-action").addEventListener("click", () => window.location.reload());
+    }, delay);
   });
 }
 

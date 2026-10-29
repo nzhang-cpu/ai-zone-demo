@@ -26,6 +26,8 @@ jobs:
             --exclude '.git' \
             --exclude '.github' \
             --exclude 'dist' \
+            --exclude '.claude' \
+            --exclude '.DS_Store' \
             ./ dist/
           touch dist/.nojekyll
       - uses: actions/upload-pages-artifact@v3

@@ -2727,3 +2727,17 @@ body[data-page="blueprint"] .site-footer a:hover {
     padding: 22px 18px 24px;
   }
 }
+
+.acct-pill { display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 12px 0 4px; border-radius: 999px; background: #fff; border: 1px solid var(--brand-border, #e4e4ea); color: var(--brand-navy, #020642); font-size: 13px; font-weight: 600; }
+.acct-pill i { width: 26px; height: 26px; border-radius: 50%; background: var(--brand-navy, #020642); color: #fff; font-style: normal; font-size: 11px; display: grid; place-items: center; }
+
+html.kd-frame body { overflow: auto; background: var(--gradient-page); }
+.result { padding: 40px 32px; }
+.result h2 { margin: 0 0 8px; font-size: 24px; font-weight: 700; color: var(--brand-navy-deep); }
+.result p { margin: 0 0 6px; max-width: 460px; font-size: 14px; line-height: 22px; color: var(--ui-muted-dark); }
+.result .result-ref { margin-top: 14px; font-size: 12px; color: #8a8fa6; }
+.result .success-actions { justify-content: flex-start; margin-top: 22px; }
+.result-bar { margin-top: 22px; width: 100%; max-width: 360px; height: 3px; border-radius: 2px; background: #e6e7f2; overflow: hidden; }
+.result-bar i { display: block; height: 100%; width: 0; background: var(--brand-navy, #020642); animation: result-fill var(--wait, 2400ms) ease-in-out forwards; }
+@keyframes result-fill { to { width: 100%; } }
+.field.kd-flash input, .field.kd-flash textarea, .field.kd-flash select { box-shadow: 0 0 0 3px rgba(91, 91, 255, .35); transition: box-shadow .3s; }
