@@ -6,9 +6,15 @@
   const STORE = "nl-demo-scripts-v1";
   const GAP = 0.45; // seconds of silence between lines
 
-  function readDemo(id) {
-    let all;
-    try { all = JSON.parse(localStorage.getItem(STORE) || "null"); } catch (e) { return null; }
+  async function readDemo(id) {
+    let all = null;
+    try {
+      const r = await fetch(`script.json?t=${Date.now()}`);
+      if (r.ok) all = await r.json();
+    } catch (e) { /* fall back to the browser copy */ }
+    if (!Array.isArray(all)) {
+      try { all = JSON.parse(localStorage.getItem(STORE) || "null"); } catch (e) { return null; }
+    }
     const demo = Array.isArray(all) ? all.find((item) => item.id === id) : null;
     if (!demo || !demo.lines.length) return null;
     if (!demo.lines.every((line) => line.voice.trim() && line.audio && line.audio.url)) return null;
@@ -49,13 +55,13 @@
   }
 
   window.buildClipTrack = async function (id) {
-    const demo = readDemo(id);
+    const demo = await readDemo(id);
     if (!demo) return null;
     try {
       const Ctx = window.AudioContext || window.webkitAudioContext;
       const ctx = new Ctx();
       const buffers = await Promise.all(demo.lines.map(async (line) => {
-        const r = await fetch(line.audio.url);
+        const r = await fetch(line.audio.url.replace(/^\//, ""));
         if (!r.ok) throw new Error(`clip ${line.audio.url}: ${r.status}`);
         return ctx.decodeAudioData(await r.arrayBuffer());
       }));

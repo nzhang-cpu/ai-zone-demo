@@ -27,6 +27,7 @@ jobs:
             --exclude '.github' \
             --exclude 'dist' \
             --exclude '.claude' \
+            --exclude 'server.js' \
             --exclude '.DS_Store' \
             ./ dist/
           touch dist/.nojekyll

@@ -82,6 +82,14 @@ http.createServer(async (req, res) => {
       const env = loadEnv();
       return send(res, 200, { key: Boolean(env.ELEVENLABS_API_KEY), voice: Boolean(env.ELEVENLABS_VOICE_ID) });
     }
+    if (url.pathname === "/api/script" && req.method === "POST") {
+      let raw = "";
+      for await (const chunk of req) raw += chunk;
+      const parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed)) return send(res, 400, { error: "Expected an array of demos" });
+      fs.writeFileSync(path.join(ROOT, "script.json"), JSON.stringify(parsed, null, 2) + "\n");
+      return send(res, 200, { ok: true });
+    }
     if (url.pathname === "/api/generate" && req.method === "POST") {
       const env = loadEnv();
       if (!env.ELEVENLABS_API_KEY || !env.ELEVENLABS_VOICE_ID) return send(res, 400, { error: "Missing ELEVENLABS_API_KEY or ELEVENLABS_VOICE_ID in .env" });

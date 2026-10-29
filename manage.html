@@ -481,7 +481,7 @@
           note = "audio skipped: open this page from node server.js to generate";
         }
       }
-      safeSet(JSON.stringify(data));
+      await persist();
       saved = clone(data);
       refreshState();
       setStatus(`Saved ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })} · ${note}`, "is-ok");
@@ -506,7 +506,7 @@
         setStatus(`Generating audio ${i + 1} of ${todo.length}…`, "is-busy");
         await generateLine(todo[i]);
       }
-      safeSet(JSON.stringify(data));
+      await persist();
       saved = clone(data);
       setStatus(`Saved · ${todo.length} audio line${todo.length === 1 ? "" : "s"} generated`, "is-ok");
     } catch (e) {
@@ -529,6 +529,23 @@
     if (isDirty()) { event.preventDefault(); event.returnValue = ""; }
   });
 
+  async function persist() {
+    safeSet(JSON.stringify(data));
+    try { await fetch("/api/script", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) }); } catch (e) { /* no server: browser copy only */ }
+  }
+
+  // script.json (committed to the repo) is the source of truth; the browser copy is a fallback.
+  (async function init() {
+    try {
+      const r = await fetch(`script.json?t=${Date.now()}`);
+      const fromFile = r.ok ? await r.json() : null;
+      if (Array.isArray(fromFile) && fromFile.length === DEFAULTS.length) {
+        saved = fromFile;
+        data = clone(saved);
+      }
+    } catch (e) { /* keep browser copy */ }
+    render();
+  })();
   render();
 })();
 

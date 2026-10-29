@@ -1,0 +1,1553 @@
+[
+  {
+    "id": "knowledge",
+    "name": "Knowledge article demo",
+    "audio": "knowledge dub.mp3",
+    "page": "article.html?id=respond-dispute&demo=1",
+    "lines": [
+      {
+        "voice": "Customers often arrive at a knowledge article that is related to their issue, but not exactly what they need.",
+        "behavior": "Start on the Google search results. The customer clicks the Northline result and lands on the knowledge article. The AI summary shows a general summary of the article.",
+        "audio": {
+          "id": "15fd8f68687f76f5",
+          "url": "/audio-cache/15fd8f68687f76f5.mp3",
+          "duration": 5.909,
+          "words": [
+            {
+              "w": "Customers",
+              "start": 0.058,
+              "end": 0.511
+            },
+            {
+              "w": "often",
+              "start": 0.58,
+              "end": 0.859
+            },
+            {
+              "w": "arrive",
+              "start": 0.906,
+              "end": 1.265
+            },
+            {
+              "w": "at",
+              "start": 1.3,
+              "end": 1.358
+            },
+            {
+              "w": "a",
+              "start": 1.393,
+              "end": 1.416
+            },
+            {
+              "w": "knowledge",
+              "start": 1.474,
+              "end": 1.858
+            },
+            {
+              "w": "article",
+              "start": 1.892,
+              "end": 2.276
+            },
+            {
+              "w": "that",
+              "start": 2.322,
+              "end": 2.438
+            },
+            {
+              "w": "is",
+              "start": 2.485,
+              "end": 2.554
+            },
+            {
+              "w": "related",
+              "start": 2.612,
+              "end": 2.995
+            },
+            {
+              "w": "to",
+              "start": 3.03,
+              "end": 3.077
+            },
+            {
+              "w": "their",
+              "start": 3.123,
+              "end": 3.274
+            },
+            {
+              "w": "issue,",
+              "start": 3.332,
+              "end": 3.843
+            },
+            {
+              "w": "but",
+              "start": 4.052,
+              "end": 4.203
+            },
+            {
+              "w": "not",
+              "start": 4.261,
+              "end": 4.447
+            },
+            {
+              "w": "exactly",
+              "start": 4.493,
+              "end": 4.969
+            },
+            {
+              "w": "what",
+              "start": 5.016,
+              "end": 5.166
+            },
+            {
+              "w": "they",
+              "start": 5.201,
+              "end": 5.341
+            },
+            {
+              "w": "need.",
+              "start": 5.433,
+              "end": 5.909
+            }
+          ]
+        }
+      },
+      {
+        "voice": "Even when the answer exists somewhere in the article, customers may struggle to identify which information applies to their specific situation.",
+        "behavior": "Scroll down over the long article.",
+        "audio": {
+          "id": "3b0a3c3b538c77a9",
+          "url": "/audio-cache/3b0a3c3b538c77a9.mp3",
+          "duration": 8.115,
+          "words": [
+            {
+              "w": "Even",
+              "start": 0.046,
+              "end": 0.279
+            },
+            {
+              "w": "when",
+              "start": 0.313,
+              "end": 0.43
+            },
+            {
+              "w": "the",
+              "start": 0.464,
+              "end": 0.534
+            },
+            {
+              "w": "answer",
+              "start": 0.604,
+              "end": 0.906
+            },
+            {
+              "w": "exists",
+              "start": 0.964,
+              "end": 1.509
+            },
+            {
+              "w": "somewhere",
+              "start": 1.625,
+              "end": 2.009
+            },
+            {
+              "w": "in",
+              "start": 2.043,
+              "end": 2.09
+            },
+            {
+              "w": "the",
+              "start": 2.125,
+              "end": 2.194
+            },
+            {
+              "w": "article,",
+              "start": 2.252,
+              "end": 2.81
+            },
+            {
+              "w": "customers",
+              "start": 3.053,
+              "end": 3.587
+            },
+            {
+              "w": "may",
+              "start": 3.646,
+              "end": 3.785
+            },
+            {
+              "w": "struggle",
+              "start": 3.855,
+              "end": 4.249
+            },
+            {
+              "w": "to",
+              "start": 4.296,
+              "end": 4.365
+            },
+            {
+              "w": "identify",
+              "start": 4.458,
+              "end": 5.05
+            },
+            {
+              "w": "which",
+              "start": 5.12,
+              "end": 5.341
+            },
+            {
+              "w": "information",
+              "start": 5.41,
+              "end": 5.991
+            },
+            {
+              "w": "applies",
+              "start": 6.026,
+              "end": 6.444
+            },
+            {
+              "w": "to",
+              "start": 6.49,
+              "end": 6.536
+            },
+            {
+              "w": "their",
+              "start": 6.583,
+              "end": 6.722
+            },
+            {
+              "w": "specific",
+              "start": 6.769,
+              "end": 7.245
+            },
+            {
+              "w": "situation.",
+              "start": 7.303,
+              "end": 8.115
+            }
+          ]
+        }
+      },
+      {
+        "voice": "With AI Zone, we can turn a static knowledge article into a dynamic, personalized experience.",
+        "behavior": "Scroll back to the top. The customer clicks the AI Helper box.",
+        "audio": {
+          "id": "f30ec0a68c6d1808",
+          "url": "/audio-cache/f30ec0a68c6d1808.mp3",
+          "duration": 5.77,
+          "words": [
+            {
+              "w": "With",
+              "start": 0.058,
+              "end": 0.209
+            },
+            {
+              "w": "AI",
+              "start": 0.267,
+              "end": 0.569
+            },
+            {
+              "w": "Zone,",
+              "start": 0.65,
+              "end": 1.045
+            },
+            {
+              "w": "we",
+              "start": 1.219,
+              "end": 1.324
+            },
+            {
+              "w": "can",
+              "start": 1.37,
+              "end": 1.486
+            },
+            {
+              "w": "turn",
+              "start": 1.521,
+              "end": 1.707
+            },
+            {
+              "w": "a",
+              "start": 1.741,
+              "end": 1.765
+            },
+            {
+              "w": "static",
+              "start": 1.811,
+              "end": 2.171
+            },
+            {
+              "w": "knowledge",
+              "start": 2.218,
+              "end": 2.577
+            },
+            {
+              "w": "article",
+              "start": 2.612,
+              "end": 3.007
+            },
+            {
+              "w": "into",
+              "start": 3.053,
+              "end": 3.228
+            },
+            {
+              "w": "a",
+              "start": 3.297,
+              "end": 3.32
+            },
+            {
+              "w": "dynamic,",
+              "start": 3.379,
+              "end": 4.005
+            },
+            {
+              "w": "personalized",
+              "start": 4.087,
+              "end": 4.865
+            },
+            {
+              "w": "experience.",
+              "start": 4.911,
+              "end": 5.77
+            }
+          ]
+        }
+      },
+      {
+        "voice": "Here, the customer is reading about bank disputes.",
+        "behavior": "The customer types a question into the AI Helper: “Why hasn’t my refund arrived?”",
+        "audio": {
+          "id": "a65a9877cb27cef8",
+          "url": "/audio-cache/a65a9877cb27cef8.mp3",
+          "duration": 2.879,
+          "words": [
+            {
+              "w": "Here,",
+              "start": 0.058,
+              "end": 0.406
+            },
+            {
+              "w": "the",
+              "start": 0.65,
+              "end": 0.743
+            },
+            {
+              "w": "customer",
+              "start": 0.789,
+              "end": 1.173
+            },
+            {
+              "w": "is",
+              "start": 1.231,
+              "end": 1.312
+            },
+            {
+              "w": "reading",
+              "start": 1.382,
+              "end": 1.625
+            },
+            {
+              "w": "about",
+              "start": 1.66,
+              "end": 1.869
+            },
+            {
+              "w": "bank",
+              "start": 1.927,
+              "end": 2.159
+            },
+            {
+              "w": "disputes.",
+              "start": 2.218,
+              "end": 2.879
+            }
+          ]
+        }
+      },
+      {
+        "voice": "Instead of reading through the entire article, they simply ask why their refund hasn’t arrived.",
+        "behavior": "Send the question. The summary regenerates to match it, using data from the customer’s account.",
+        "audio": {
+          "id": "50142de4b3b5d07f",
+          "url": "/audio-cache/50142de4b3b5d07f.mp3",
+          "duration": 5.248,
+          "words": [
+            {
+              "w": "Instead",
+              "start": 0.046,
+              "end": 0.348
+            },
+            {
+              "w": "of",
+              "start": 0.383,
+              "end": 0.43
+            },
+            {
+              "w": "reading",
+              "start": 0.499,
+              "end": 0.743
+            },
+            {
+              "w": "through",
+              "start": 0.789,
+              "end": 1.022
+            },
+            {
+              "w": "the",
+              "start": 1.057,
+              "end": 1.126
+            },
+            {
+              "w": "entire",
+              "start": 1.196,
+              "end": 1.649
+            },
+            {
+              "w": "article,",
+              "start": 1.707,
+              "end": 2.287
+            },
+            {
+              "w": "they",
+              "start": 2.403,
+              "end": 2.554
+            },
+            {
+              "w": "simply",
+              "start": 2.612,
+              "end": 2.926
+            },
+            {
+              "w": "ask",
+              "start": 2.995,
+              "end": 3.228
+            },
+            {
+              "w": "why",
+              "start": 3.297,
+              "end": 3.529
+            },
+            {
+              "w": "their",
+              "start": 3.599,
+              "end": 3.75
+            },
+            {
+              "w": "refund",
+              "start": 3.82,
+              "end": 4.284
+            },
+            {
+              "w": "hasn't",
+              "start": 4.342,
+              "end": 4.621
+            },
+            {
+              "w": "arrived.",
+              "start": 4.644,
+              "end": 5.248
+            }
+          ]
+        }
+      },
+      {
+        "voice": "The AI helper understands the customer’s question and generates a focused summary using the relevant knowledge content.",
+        "behavior": "Cursor browses the new summary, then hovers source 1 to show the knowledge snippet preview.",
+        "audio": {
+          "id": "0b06f218a1961783",
+          "url": "/audio-cache/0b06f218a1961783.mp3",
+          "duration": 6.699,
+          "words": [
+            {
+              "w": "The",
+              "start": 0.058,
+              "end": 0.163
+            },
+            {
+              "w": "AI",
+              "start": 0.244,
+              "end": 0.615
+            },
+            {
+              "w": "helper",
+              "start": 0.673,
+              "end": 0.987
+            },
+            {
+              "w": "understands",
+              "start": 1.057,
+              "end": 1.649
+            },
+            {
+              "w": "the",
+              "start": 1.695,
+              "end": 1.765
+            },
+            {
+              "w": "customer's",
+              "start": 1.8,
+              "end": 2.241
+            },
+            {
+              "w": "question",
+              "start": 2.287,
+              "end": 2.775
+            },
+            {
+              "w": "and",
+              "start": 3.019,
+              "end": 3.216
+            },
+            {
+              "w": "generates",
+              "start": 3.274,
+              "end": 3.727
+            },
+            {
+              "w": "a",
+              "start": 3.762,
+              "end": 3.796
+            },
+            {
+              "w": "focused",
+              "start": 3.866,
+              "end": 4.272
+            },
+            {
+              "w": "summary",
+              "start": 4.331,
+              "end": 4.748
+            },
+            {
+              "w": "using",
+              "start": 4.865,
+              "end": 5.143
+            },
+            {
+              "w": "the",
+              "start": 5.19,
+              "end": 5.259
+            },
+            {
+              "w": "relevant",
+              "start": 5.317,
+              "end": 5.7
+            },
+            {
+              "w": "knowledge",
+              "start": 5.735,
+              "end": 6.084
+            },
+            {
+              "w": "content.",
+              "start": 6.13,
+              "end": 6.699
+            }
+          ]
+        }
+      },
+      {
+        "voice": "Notice that we’re not just summarizing the article.",
+        "behavior": "Cursor moves back over the summary text.",
+        "audio": {
+          "id": "7df34c31d2e54879",
+          "url": "/audio-cache/7df34c31d2e54879.mp3",
+          "duration": 2.322,
+          "words": [
+            {
+              "w": "Notice",
+              "start": 0.058,
+              "end": 0.337
+            },
+            {
+              "w": "that",
+              "start": 0.36,
+              "end": 0.464
+            },
+            {
+              "w": "we're",
+              "start": 0.488,
+              "end": 0.639
+            },
+            {
+              "w": "not",
+              "start": 0.673,
+              "end": 0.801
+            },
+            {
+              "w": "just",
+              "start": 0.859,
+              "end": 1.045
+            },
+            {
+              "w": "summarizing",
+              "start": 1.091,
+              "end": 1.672
+            },
+            {
+              "w": "the",
+              "start": 1.718,
+              "end": 1.788
+            },
+            {
+              "w": "article.",
+              "start": 1.846,
+              "end": 2.322
+            }
+          ]
+        }
+      },
+      {
+        "voice": "We’re highlighting the information that matters to this customer, based on their specific situation.",
+        "behavior": "Cursor hovers source 2 to show its snippet preview.",
+        "audio": {
+          "id": "3e9e8d2d50c1863e",
+          "url": "/audio-cache/3e9e8d2d50c1863e.mp3",
+          "duration": 5.48,
+          "words": [
+            {
+              "w": "We're",
+              "start": 0.046,
+              "end": 0.221
+            },
+            {
+              "w": "highlighting",
+              "start": 0.255,
+              "end": 0.72
+            },
+            {
+              "w": "the",
+              "start": 0.755,
+              "end": 0.824
+            },
+            {
+              "w": "information",
+              "start": 0.894,
+              "end": 1.451
+            },
+            {
+              "w": "that",
+              "start": 1.498,
+              "end": 1.602
+            },
+            {
+              "w": "matters",
+              "start": 1.66,
+              "end": 2.02
+            },
+            {
+              "w": "to",
+              "start": 2.078,
+              "end": 2.148
+            },
+            {
+              "w": "this",
+              "start": 2.206,
+              "end": 2.345
+            },
+            {
+              "w": "customer,",
+              "start": 2.403,
+              "end": 3.03
+            },
+            {
+              "w": "based",
+              "start": 3.204,
+              "end": 3.518
+            },
+            {
+              "w": "on",
+              "start": 3.564,
+              "end": 3.634
+            },
+            {
+              "w": "their",
+              "start": 3.68,
+              "end": 3.855
+            },
+            {
+              "w": "specific",
+              "start": 3.913,
+              "end": 4.563
+            },
+            {
+              "w": "situation.",
+              "start": 4.621,
+              "end": 5.48
+            }
+          ]
+        }
+      },
+      {
+        "voice": "This helps customers understand the next step faster, without needing to search through multiple articles or contact a support agent.",
+        "behavior": "Cursor rests near the summary. The walkthrough ends.",
+        "audio": {
+          "id": "006aeab4bbaf4c5f",
+          "url": "/audio-cache/006aeab4bbaf4c5f.mp3",
+          "duration": 7.419,
+          "words": [
+            {
+              "w": "This",
+              "start": 0.058,
+              "end": 0.232
+            },
+            {
+              "w": "helps",
+              "start": 0.29,
+              "end": 0.522
+            },
+            {
+              "w": "customers",
+              "start": 0.569,
+              "end": 1.033
+            },
+            {
+              "w": "understand",
+              "start": 1.103,
+              "end": 1.683
+            },
+            {
+              "w": "the",
+              "start": 1.741,
+              "end": 1.811
+            },
+            {
+              "w": "next",
+              "start": 1.869,
+              "end": 2.09
+            },
+            {
+              "w": "step",
+              "start": 2.125,
+              "end": 2.357
+            },
+            {
+              "w": "faster,",
+              "start": 2.438,
+              "end": 3.123
+            },
+            {
+              "w": "without",
+              "start": 3.332,
+              "end": 3.657
+            },
+            {
+              "w": "needing",
+              "start": 3.704,
+              "end": 3.947
+            },
+            {
+              "w": "to",
+              "start": 3.994,
+              "end": 4.052
+            },
+            {
+              "w": "search",
+              "start": 4.122,
+              "end": 4.389
+            },
+            {
+              "w": "through",
+              "start": 4.435,
+              "end": 4.656
+            },
+            {
+              "w": "multiple",
+              "start": 4.702,
+              "end": 5.097
+            },
+            {
+              "w": "articles",
+              "start": 5.143,
+              "end": 5.631
+            },
+            {
+              "w": "or",
+              "start": 5.7,
+              "end": 5.805
+            },
+            {
+              "w": "contact",
+              "start": 5.875,
+              "end": 6.432
+            },
+            {
+              "w": "a",
+              "start": 6.478,
+              "end": 6.502
+            },
+            {
+              "w": "support",
+              "start": 6.56,
+              "end": 6.908
+            },
+            {
+              "w": "agent.",
+              "start": 6.954,
+              "end": 7.419
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "case",
+    "name": "Case + automation demo",
+    "audio": "case dub.mp3",
+    "page": "submit.html?demo=1",
+    "lines": [
+      {
+        "voice": "Now let’s look at a different challenge.",
+        "behavior": "Case page is shown.",
+        "audio": {
+          "id": "552e1257e7221a29",
+          "url": "/audio-cache/552e1257e7221a29.mp3",
+          "duration": 1.718,
+          "words": [
+            {
+              "w": "Now",
+              "start": 0.046,
+              "end": 0.174
+            },
+            {
+              "w": "let's",
+              "start": 0.221,
+              "end": 0.406
+            },
+            {
+              "w": "look",
+              "start": 0.441,
+              "end": 0.592
+            },
+            {
+              "w": "at",
+              "start": 0.627,
+              "end": 0.673
+            },
+            {
+              "w": "a",
+              "start": 0.708,
+              "end": 0.731
+            },
+            {
+              "w": "different",
+              "start": 0.778,
+              "end": 1.091
+            },
+            {
+              "w": "challenge.",
+              "start": 1.126,
+              "end": 1.718
+            }
+          ]
+        }
+      },
+      {
+        "voice": "Customers often submit support cases for issues that could be resolved through self-service.",
+        "behavior": "AI Zone shows general case turnaround information. No action button.",
+        "audio": {
+          "id": "39b94ba238c93f8c",
+          "url": "/audio-cache/39b94ba238c93f8c.mp3",
+          "duration": 4.957,
+          "words": [
+            {
+              "w": "Customers",
+              "start": 0.058,
+              "end": 0.511
+            },
+            {
+              "w": "often",
+              "start": 0.58,
+              "end": 0.906
+            },
+            {
+              "w": "submit",
+              "start": 0.964,
+              "end": 1.265
+            },
+            {
+              "w": "support",
+              "start": 1.324,
+              "end": 1.683
+            },
+            {
+              "w": "cases",
+              "start": 1.73,
+              "end": 2.125
+            },
+            {
+              "w": "for",
+              "start": 2.183,
+              "end": 2.287
+            },
+            {
+              "w": "issues",
+              "start": 2.357,
+              "end": 2.717
+            },
+            {
+              "w": "that",
+              "start": 2.763,
+              "end": 2.879
+            },
+            {
+              "w": "could",
+              "start": 2.926,
+              "end": 3.111
+            },
+            {
+              "w": "be",
+              "start": 3.146,
+              "end": 3.228
+            },
+            {
+              "w": "resolved",
+              "start": 3.297,
+              "end": 3.785
+            },
+            {
+              "w": "through",
+              "start": 3.831,
+              "end": 4.063
+            },
+            {
+              "w": "self-service.",
+              "start": 4.11,
+              "end": 4.957
+            }
+          ]
+        }
+      },
+      {
+        "voice": "Here, a customer is reporting a duplicate charge and preparing to submit a case.",
+        "behavior": "Name, email and topic are filled. The customer enters the subject and description.",
+        "audio": {
+          "id": "e3b54b97c9918bbd",
+          "url": "/audio-cache/e3b54b97c9918bbd.mp3",
+          "duration": 4.748,
+          "words": [
+            {
+              "w": "Here,",
+              "start": 0.046,
+              "end": 0.441
+            },
+            {
+              "w": "a",
+              "start": 0.65,
+              "end": 0.708
+            },
+            {
+              "w": "customer",
+              "start": 0.789,
+              "end": 1.219
+            },
+            {
+              "w": "is",
+              "start": 1.277,
+              "end": 1.347
+            },
+            {
+              "w": "reporting",
+              "start": 1.416,
+              "end": 1.846
+            },
+            {
+              "w": "a",
+              "start": 1.892,
+              "end": 1.916
+            },
+            {
+              "w": "duplicate",
+              "start": 1.985,
+              "end": 2.461
+            },
+            {
+              "w": "charge",
+              "start": 2.496,
+              "end": 2.914
+            },
+            {
+              "w": "and",
+              "start": 2.961,
+              "end": 3.077
+            },
+            {
+              "w": "preparing",
+              "start": 3.123,
+              "end": 3.622
+            },
+            {
+              "w": "to",
+              "start": 3.68,
+              "end": 3.75
+            },
+            {
+              "w": "submit",
+              "start": 3.808,
+              "end": 4.11
+            },
+            {
+              "w": "a",
+              "start": 4.145,
+              "end": 4.18
+            },
+            {
+              "w": "case.",
+              "start": 4.214,
+              "end": 4.748
+            }
+          ]
+        }
+      },
+      {
+        "voice": "As the customer types, AI Zone understands the issue and provides personalized recommendations.",
+        "behavior": "AI Zone picks up what the customer typed and updates its recommendation.",
+        "audio": {
+          "id": "e57d86335f8865ad",
+          "url": "/audio-cache/e57d86335f8865ad.mp3",
+          "duration": 5.724,
+          "words": [
+            {
+              "w": "As",
+              "start": 0.035,
+              "end": 0.163
+            },
+            {
+              "w": "the",
+              "start": 0.209,
+              "end": 0.279
+            },
+            {
+              "w": "customer",
+              "start": 0.313,
+              "end": 0.685
+            },
+            {
+              "w": "types,",
+              "start": 0.743,
+              "end": 1.173
+            },
+            {
+              "w": "AI",
+              "start": 1.416,
+              "end": 1.741
+            },
+            {
+              "w": "Zone",
+              "start": 1.8,
+              "end": 2.055
+            },
+            {
+              "w": "understands",
+              "start": 2.113,
+              "end": 2.717
+            },
+            {
+              "w": "the",
+              "start": 2.763,
+              "end": 2.833
+            },
+            {
+              "w": "issue",
+              "start": 2.914,
+              "end": 3.251
+            },
+            {
+              "w": "and",
+              "start": 3.297,
+              "end": 3.39
+            },
+            {
+              "w": "provides",
+              "start": 3.448,
+              "end": 3.901
+            },
+            {
+              "w": "personalized",
+              "start": 3.959,
+              "end": 4.667
+            },
+            {
+              "w": "recommendations.",
+              "start": 4.714,
+              "end": 5.724
+            }
+          ]
+        }
+      },
+      {
+        "voice": "Instead of waiting for an agent, AI zone offers a faster path to request a refund.",
+        "behavior": "A “Request the refund” button appears.",
+        "audio": {
+          "id": "9b1904904b7ee83a",
+          "url": "/audio-cache/9b1904904b7ee83a.mp3",
+          "duration": 5.039,
+          "words": [
+            {
+              "w": "Instead",
+              "start": 0.035,
+              "end": 0.337
+            },
+            {
+              "w": "of",
+              "start": 0.372,
+              "end": 0.418
+            },
+            {
+              "w": "waiting",
+              "start": 0.476,
+              "end": 0.72
+            },
+            {
+              "w": "for",
+              "start": 0.766,
+              "end": 0.871
+            },
+            {
+              "w": "an",
+              "start": 0.929,
+              "end": 0.987
+            },
+            {
+              "w": "agent,",
+              "start": 1.057,
+              "end": 1.591
+            },
+            {
+              "w": "AI",
+              "start": 1.8,
+              "end": 2.125
+            },
+            {
+              "w": "zone",
+              "start": 2.194,
+              "end": 2.496
+            },
+            {
+              "w": "offers",
+              "start": 2.554,
+              "end": 2.868
+            },
+            {
+              "w": "a",
+              "start": 2.914,
+              "end": 2.937
+            },
+            {
+              "w": "faster",
+              "start": 3.007,
+              "end": 3.39
+            },
+            {
+              "w": "path",
+              "start": 3.46,
+              "end": 3.785
+            },
+            {
+              "w": "to",
+              "start": 3.831,
+              "end": 3.901
+            },
+            {
+              "w": "request",
+              "start": 3.971,
+              "end": 4.331
+            },
+            {
+              "w": "a",
+              "start": 4.377,
+              "end": 4.4
+            },
+            {
+              "w": "refund.",
+              "start": 4.47,
+              "end": 5.039
+            }
+          ]
+        }
+      },
+      {
+        "voice": "With one click, the customer moves directly into the refund process.",
+        "behavior": "The customer clicks “Request the refund” and goes to the automation screen.",
+        "audio": {
+          "id": "e37e91218e74fe1d",
+          "url": "/audio-cache/e37e91218e74fe1d.mp3",
+          "duration": 3.889,
+          "words": [
+            {
+              "w": "With",
+              "start": 0.058,
+              "end": 0.209
+            },
+            {
+              "w": "one",
+              "start": 0.267,
+              "end": 0.453
+            },
+            {
+              "w": "click,",
+              "start": 0.499,
+              "end": 0.952
+            },
+            {
+              "w": "the",
+              "start": 1.126,
+              "end": 1.219
+            },
+            {
+              "w": "customer",
+              "start": 1.265,
+              "end": 1.637
+            },
+            {
+              "w": "moves",
+              "start": 1.695,
+              "end": 1.916
+            },
+            {
+              "w": "directly",
+              "start": 1.95,
+              "end": 2.357
+            },
+            {
+              "w": "into",
+              "start": 2.403,
+              "end": 2.543
+            },
+            {
+              "w": "the",
+              "start": 2.577,
+              "end": 2.647
+            },
+            {
+              "w": "refund",
+              "start": 2.705,
+              "end": 3.088
+            },
+            {
+              "w": "process.",
+              "start": 3.146,
+              "end": 3.889
+            }
+          ]
+        }
+      },
+      {
+        "voice": "AI zone carries over the customer’s information and automatically fills out the refund form.",
+        "behavior": "The refund form is pre-filled with the customer and transaction details. Completed fields are highlighted.",
+        "audio": {
+          "id": "bcd5c5e314806e82",
+          "url": "/audio-cache/bcd5c5e314806e82.mp3",
+          "duration": 5.016,
+          "words": [
+            {
+              "w": "AI",
+              "start": 0.035,
+              "end": 0.337
+            },
+            {
+              "w": "zone",
+              "start": 0.418,
+              "end": 0.697
+            },
+            {
+              "w": "carries",
+              "start": 0.743,
+              "end": 1.08
+            },
+            {
+              "w": "over",
+              "start": 1.126,
+              "end": 1.265
+            },
+            {
+              "w": "the",
+              "start": 1.312,
+              "end": 1.382
+            },
+            {
+              "w": "customer's",
+              "start": 1.416,
+              "end": 1.858
+            },
+            {
+              "w": "information",
+              "start": 1.916,
+              "end": 2.519
+            },
+            {
+              "w": "and",
+              "start": 2.589,
+              "end": 2.728
+            },
+            {
+              "w": "automatically",
+              "start": 2.798,
+              "end": 3.425
+            },
+            {
+              "w": "fills",
+              "start": 3.483,
+              "end": 3.738
+            },
+            {
+              "w": "out",
+              "start": 3.796,
+              "end": 3.924
+            },
+            {
+              "w": "the",
+              "start": 3.959,
+              "end": 4.029
+            },
+            {
+              "w": "refund",
+              "start": 4.098,
+              "end": 4.505
+            },
+            {
+              "w": "form.",
+              "start": 4.574,
+              "end": 5.016
+            }
+          ]
+        }
+      },
+      {
+        "voice": "The customer simply reviews the details and submits the request.",
+        "behavior": "The customer reviews the form and clicks “Submit request”.",
+        "audio": {
+          "id": "7ebaed055bb31060",
+          "url": "/audio-cache/7ebaed055bb31060.mp3",
+          "duration": 3.657,
+          "words": [
+            {
+              "w": "The",
+              "start": 0.081,
+              "end": 0.163
+            },
+            {
+              "w": "customer",
+              "start": 0.209,
+              "end": 0.615
+            },
+            {
+              "w": "simply",
+              "start": 0.685,
+              "end": 0.975
+            },
+            {
+              "w": "reviews",
+              "start": 1.057,
+              "end": 1.428
+            },
+            {
+              "w": "the",
+              "start": 1.498,
+              "end": 1.567
+            },
+            {
+              "w": "details",
+              "start": 1.614,
+              "end": 2.136
+            },
+            {
+              "w": "and",
+              "start": 2.183,
+              "end": 2.299
+            },
+            {
+              "w": "submits",
+              "start": 2.368,
+              "end": 2.786
+            },
+            {
+              "w": "the",
+              "start": 2.844,
+              "end": 2.914
+            },
+            {
+              "w": "request.",
+              "start": 2.984,
+              "end": 3.657
+            }
+          ]
+        }
+      },
+      {
+        "voice": "The automation processes the refund without human agent involvement.",
+        "behavior": "Automation runs and shows a processing status.",
+        "audio": {
+          "id": "7599557c340d6397",
+          "url": "/audio-cache/7599557c340d6397.mp3",
+          "duration": 3.796,
+          "words": [
+            {
+              "w": "The",
+              "start": 0.058,
+              "end": 0.163
+            },
+            {
+              "w": "automation",
+              "start": 0.221,
+              "end": 0.801
+            },
+            {
+              "w": "processes",
+              "start": 0.871,
+              "end": 1.44
+            },
+            {
+              "w": "the",
+              "start": 1.486,
+              "end": 1.556
+            },
+            {
+              "w": "refund",
+              "start": 1.625,
+              "end": 2.078
+            },
+            {
+              "w": "without",
+              "start": 2.125,
+              "end": 2.403
+            },
+            {
+              "w": "human",
+              "start": 2.461,
+              "end": 2.74
+            },
+            {
+              "w": "agent",
+              "start": 2.798,
+              "end": 3.123
+            },
+            {
+              "w": "involvement.",
+              "start": 3.17,
+              "end": 3.796
+            }
+          ]
+        }
+      },
+      {
+        "voice": "And the refund is successfully completed.",
+        "behavior": "Success confirmation shows the refund amount and status.",
+        "audio": {
+          "id": "cad1ff9fb820f8bc",
+          "url": "/audio-cache/cad1ff9fb820f8bc.mp3",
+          "duration": 2.264,
+          "words": [
+            {
+              "w": "And",
+              "start": 0.035,
+              "end": 0.151
+            },
+            {
+              "w": "the",
+              "start": 0.186,
+              "end": 0.255
+            },
+            {
+              "w": "refund",
+              "start": 0.313,
+              "end": 0.789
+            },
+            {
+              "w": "is",
+              "start": 0.859,
+              "end": 0.952
+            },
+            {
+              "w": "successfully",
+              "start": 0.987,
+              "end": 1.625
+            },
+            {
+              "w": "completed.",
+              "start": 1.672,
+              "end": 2.264
+            }
+          ]
+        }
+      },
+      {
+        "voice": "What could have been another support ticket is now a completed self-service resolution.",
+        "behavior": "Hold on the success screen. The walkthrough ends.",
+        "audio": {
+          "id": "0484a0a95601042e",
+          "url": "/audio-cache/0484a0a95601042e.mp3",
+          "duration": 4.331,
+          "words": [
+            {
+              "w": "What",
+              "start": 0.046,
+              "end": 0.197
+            },
+            {
+              "w": "could",
+              "start": 0.244,
+              "end": 0.383
+            },
+            {
+              "w": "have",
+              "start": 0.418,
+              "end": 0.522
+            },
+            {
+              "w": "been",
+              "start": 0.546,
+              "end": 0.685
+            },
+            {
+              "w": "another",
+              "start": 0.72,
+              "end": 1.01
+            },
+            {
+              "w": "support",
+              "start": 1.068,
+              "end": 1.451
+            },
+            {
+              "w": "ticket",
+              "start": 1.486,
+              "end": 1.811
+            },
+            {
+              "w": "is",
+              "start": 1.869,
+              "end": 1.962
+            },
+            {
+              "w": "now",
+              "start": 2.032,
+              "end": 2.171
+            },
+            {
+              "w": "a",
+              "start": 2.241,
+              "end": 2.264
+            },
+            {
+              "w": "completed",
+              "start": 2.322,
+              "end": 2.844
+            },
+            {
+              "w": "self-service",
+              "start": 2.914,
+              "end": 3.541
+            },
+            {
+              "w": "resolution.",
+              "start": 3.576,
+              "end": 4.331
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

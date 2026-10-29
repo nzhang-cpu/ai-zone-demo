@@ -2,4 +2,4 @@
 .claude/
 .env
 .env.local
-audio-cache/
+audio-cache/*.json
