@@ -2741,3 +2741,7 @@ html.kd-frame body { overflow: auto; background: var(--gradient-page); }
 .result-bar i { display: block; height: 100%; width: 0; background: var(--brand-navy, #020642); animation: result-fill var(--wait, 2400ms) ease-in-out forwards; }
 @keyframes result-fill { to { width: 100%; } }
 .field.kd-flash input, .field.kd-flash textarea, .field.kd-flash select { box-shadow: 0 0 0 3px rgba(91, 91, 255, .35); transition: box-shadow .3s; }
+
+.studio-bar .studio-link { margin-left: auto; height: 34px; padding: 0 14px; display: inline-flex; align-items: center; border-radius: 999px; background: rgba(255,255,255,.14); color: #fff; font-size: 12px; font-weight: 600; text-decoration: none; }
+.studio-bar .studio-link:hover { background: rgba(255,255,255,.24); }
+.studio-bar .kd-open { margin-left: 8px; }

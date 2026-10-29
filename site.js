@@ -2422,6 +2422,11 @@ function mountTabs() {
     nav.appendChild(link);
   });
   bar.appendChild(nav);
+  const edit = document.createElement("a");
+  edit.className = "studio-link";
+  edit.href = "manage.html";
+  edit.textContent = "Edit script";
+  bar.appendChild(edit);
   // mountTestPlan(bar); // hidden for the demos
   // mountBlueprint(bar); // hidden for the demos
 

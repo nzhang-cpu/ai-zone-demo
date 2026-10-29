@@ -22,6 +22,9 @@
     .kd-dock { flex: none; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 2px 0 0; }
     .kd-caption { min-height: 52px; max-width: min(820px, 92%); display: flex; align-items: center; justify-content: center; color: #fff; font: 600 18px/1.4 var(--font-sans, "Plus Jakarta Sans", system-ui, sans-serif); text-align: center; opacity: 0; transition: opacity .25s ease; }
     .kd-caption.is-on { opacity: 1; }
+    .kd-caption .w { opacity: .45; transition: opacity .12s; border-radius: 4px; padding: 0 1px; }
+    .kd-caption .w.is-read { opacity: 1; }
+    .kd-caption .w.is-now { opacity: 1; background: rgba(140,140,255,.45); }
     .kd-controls { width: min(560px, 92%); display: flex; align-items: center; gap: 14px; }
     .kd-controls button { flex: none; width: 36px; height: 36px; display: grid; place-items: center; border: 0; border-radius: 50%; background: #fff; color: #020642; cursor: pointer; }
     .kd-controls .kd-quit { width: auto; height: 30px; padding: 0 14px; border-radius: 999px; background: rgba(255,255,255,.14); color: #fff; font: 600 12px var(--font-sans, system-ui, sans-serif); }
@@ -192,6 +195,34 @@
     [47.6, ""]
   ];
 
+  const ORIG = CAPTIONS.map((c) => [c[0], c[1]]);
+
+  // Long captions are cut in two so they never run past three lines. Parts are timed by length.
+  (function splitLong() {
+    const MAX = 88;
+    const out = [];
+    CAPTIONS.forEach(([start, text], k) => {
+      const next = CAPTIONS[k + 1] ? CAPTIONS[k + 1][0] : start + 3;
+      if (text.length <= MAX) { out.push([start, text]); return; }
+      const mid = text.length / 2;
+      let cut = -1;
+      for (let p = 0; p < text.length; p += 1) {
+        if (/[,;:.]/.test(text[p]) && text[p + 1] === " " && (cut < 0 || Math.abs(p - mid) < Math.abs(cut - mid))) cut = p;
+      }
+      if (cut < 0 || Math.abs(cut - mid) > text.length * 0.25) {
+        cut = text.lastIndexOf(" ", Math.round(mid));
+        cut = cut < 0 ? text.indexOf(" ", Math.round(mid)) : cut;
+      } else cut += 1;
+      const first = text.slice(0, cut).trim();
+      const second = text.slice(cut).trim();
+      const span = Math.max(0.5, next - 0.4 - start);
+      out.push([start, first, true]);
+      out.push([start + span * (first.length / text.length), second]);
+    });
+    CAPTIONS.splice(0, CAPTIONS.length, ...out);
+  })();
+
+
   const CUES = [
     [0.2, () => moveCursorTo(560, 260)],
     [3.0, () => { const t = slot()?.querySelector(".ai-card__text"); if (t) moveCursor(t, { dx: 120, dy: 14 }); }],
@@ -216,17 +247,101 @@
     [47.6, () => { toggle.textContent = "Replay"; }]
   ];
 
+  /* ---- new audio: per-line clips from the manage page ---- */
+  let clipTrack = null;
+  function applyTrack(track) {
+    clipTrack = track;
+    const MAX = 88;
+    const caps = [];
+    track.lines.forEach((ln) => {
+      const text = ln.words.map((w) => w.w).join(" ");
+      if (text.length <= MAX || ln.words.length < 4) { caps.push([ln.words[0].start, text, false, ln.words]); return; }
+      const mid = text.length / 2;
+      let acc = 0;
+      let cut = 1;
+      let best = Infinity;
+      ln.words.forEach((w, k) => {
+        acc += w.w.length + 1;
+        if (k >= ln.words.length - 1) return;
+        const punct = /[,;:.]$/.test(w.w) ? 0 : 12;
+        const score = Math.abs(acc - mid) + punct;
+        if (score < best) { best = score; cut = k + 1; }
+      });
+      const a = ln.words.slice(0, cut);
+      const b = ln.words.slice(cut);
+      caps.push([a[0].start, a.map((w) => w.w).join(" "), true, a]);
+      caps.push([b[0].start, b.map((w) => w.w).join(" "), false, b]);
+    });
+    caps.push([track.total, ""]);
+    CAPTIONS.splice(0, CAPTIONS.length, ...caps);
+
+    // Move each cue to the same moment of the same line in the new audio.
+    const n = track.lines.length;
+    const realCount = ORIG.length - 1;
+    CUES.forEach((cue) => {
+      if (cue.orig === undefined) cue.orig = cue[0];
+      const t = cue.orig;
+      if (t >= ORIG[realCount][0]) { cue[0] = track.total; return; }
+      let idx = 0;
+      ORIG.forEach(([start], k) => { if (k < realCount && start <= t) idx = k; });
+      const oldDur = Math.max(0.5, ORIG[idx + 1][0] - 0.4 - ORIG[idx][0]);
+      const line = track.lines[Math.min(idx, n - 1)];
+      const offset = Math.max(0, t - ORIG[idx][0]);
+      cue[0] = line.start + Math.min(offset * (line.dur / oldDur), line.dur + 0.35);
+    });
+    audio.src = track.url;
+  }
+
   /* ---- player ---- */
   let fired = 0;
   let capIndex = -1;
   let raf = 0;
 
+  let capWords = [];
   function setCaption(i) {
     if (i === capIndex) return;
     capIndex = i;
     const text = i >= 0 ? CAPTIONS[i][1] : "";
-    caption.textContent = text;
+    caption.textContent = "";
+    capWords = text.split(/\s+/).filter(Boolean).map((word) => {
+      const span = document.createElement("span");
+      span.className = "w";
+      span.textContent = word;
+      caption.append(span, " ");
+      return span;
+    });
     caption.classList.toggle("is-on", Boolean(text));
+  }
+
+  // Highlight words in proportion to their length across the spoken part of the line.
+  function highlightWords(t) {
+    if (capIndex < 0 || !capWords.length) return;
+    const timed = CAPTIONS[capIndex][3];
+    if (timed && timed.length === capWords.length) {
+      let now = 0;
+      timed.forEach((w, k) => { if (w.start <= t) now = k; });
+      capWords.forEach((el, k) => {
+        el.classList.toggle("is-read", k < now);
+        el.classList.toggle("is-now", k === now && t <= timed[k].end + 0.2);
+      });
+      return;
+    }
+    const start = CAPTIONS[capIndex][0];
+    const next = CAPTIONS[capIndex + 1] ? CAPTIONS[capIndex + 1][0] : start + 3;
+    const end = Math.max(start + 0.5, CAPTIONS[capIndex][2] ? next : next - 0.4);
+    const frac = Math.min(1, Math.max(0, (t - start) / (end - start)));
+    const weights = capWords.map((w) => w.textContent.length + 2);
+    const total = weights.reduce((a, b) => a + b, 0);
+    let acc = 0;
+    let now = capWords.length - 1;
+    for (let k = 0; k < weights.length; k += 1) {
+      acc += weights[k];
+      if (frac * total <= acc) { now = k; break; }
+    }
+    capWords.forEach((w, k) => {
+      w.classList.toggle("is-read", k < now);
+      w.classList.toggle("is-now", k === now && frac < 1);
+    });
   }
 
   function tick() {
@@ -238,6 +353,7 @@
     let i = -1;
     CAPTIONS.forEach(([at], idx) => { if (at <= t) i = idx; });
     setCaption(i);
+    highlightWords(t);
     progress.style.width = `${Math.min(100, (t / (audio.duration || 47.6)) * 100)}%`;
     if (!audio.paused && !audio.ended) raf = requestAnimationFrame(tick);
   }
@@ -329,5 +445,6 @@
   dock.querySelector("[data-kd-quit]").addEventListener("click", exitWalkthrough);
   openBtn.addEventListener("click", enterWalkthrough);
 
-  window.setTimeout(() => { reset(); play(); }, 400);
+  const ready = window.buildClipTrack ? window.buildClipTrack("case").then((track) => { if (track) applyTrack(track); }).catch(() => {}) : Promise.resolve();
+  ready.then(() => window.setTimeout(() => { reset(); play(); }, 400));
 })();

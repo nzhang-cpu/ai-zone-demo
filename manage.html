@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manage walkthrough audio — Northline Help</title>
+    <style>
+:root {
+  /* Brand */
+  --brand-navy: #1e1b4b;
+  --brand-navy-deep: #001769;
+  --brand-purple: #8200db;
+  --brand-purple-dark: #4c1d95;
+  --brand-purple-mid: #312e81;
+  --brand-green: #096;
+  --brand-green-dark: #064e3b;
+  --brand-green-mid: #065f46;
+
+  /* UI */
+  --ui-body: #364153;
+  --ui-muted: #9ca3af;
+  --ui-muted-dark: #6b7280;
+  --ui-icon: #4a5565;
+  --ui-border-light: #d1d5db;
+  --ui-border-faint: #e5e7eb;
+  --ui-bg-page: #f5f5f7;
+  --ui-bg-input: #f3f4f6;
+  --ui-bg-file-chip: #f0f0f8;
+  --ui-border-chip: #e0e0f0;
+
+  /* Accent */
+  --accent-indigo: #6366f1;
+  --accent-sky: #0ea5e9;
+  --accent-amber: #f59e0b;
+  --accent-emerald: #10b981;
+  --accent-slate: #64748b;
+
+  /* Fixed */
+  --white: #ffffff;
+  --black: #000000;
+  --status-dot: #00c950;
+
+  /* Alpha */
+  --alpha-rail-bg: rgba(220, 225, 255, 0.75);
+  --alpha-focus-ring: rgba(99, 102, 241, 0.25);
+  --alpha-overlay-modal: rgba(0, 0, 0, 0.3);
+  --alpha-overlay-light: rgba(0, 0, 0, 0.1);
+  --alpha-shadow-subtle: rgba(0, 0, 0, 0.06);
+  --alpha-shadow-panel: rgba(0, 0, 0, 0.08);
+  --alpha-shadow-drop: rgba(0, 0, 0, 0.12);
+
+  /* Gradients */
+  --gradient-page: linear-gradient(135deg, #e8f5f0 0%, #ede8f7 50%, #e8f0f7 100%);
+  --gradient-theme: linear-gradient(135deg, #d6effc 0%, #d8e4ff 49%, #d6f3fd 95%);
+  --gradient-button-primary: linear-gradient(142.634deg, #101c86 0%, #020642 100%);
+  --gradient-button-send: linear-gradient(135deg, #8200db 0%, #4c1d95 100%);
+  --gradient-button-indigo: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+
+  /* Theme (Sky Periwinkle) — used for search bar ring / chip fills */
+  --theme-gradient: linear-gradient(135deg, #d6effc 0%, #d8e4ff 49%, #d6f3fd 95%);
+  --theme-swatch-a: #a3d9f6;
+  --theme-swatch-b: #abbffd;
+  --theme-text: #1e1b4b;
+
+  /* Shadows */
+  --shadow-search-glow: 0 0 8px 2px rgba(200, 225, 255, 0.3),
+    0 0 28px 6px rgba(200, 225, 255, 0.15), 0 0 60px 12px rgba(210, 230, 255, 0.08);
+  --shadow-dropdown: 0px 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-modal: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-floating: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+  /* Typography */
+  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+  --fs-xs: 9px;
+  --fs-sm: 10px;
+  --fs-sm2: 11px;
+  --fs-sm3: 12px;
+  --fs-base: 13px;
+  --fs-md: 14px;
+  --fs-md2: 15px;
+  --fs-lg: 16px;
+  --fs-xl: 20px;
+  --fs-hero: 60px;
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --lh-body: 22px;
+  --lh-sub: 28px;
+  --tracking-hero: -1.5px;
+  --tracking-search: -0.3125px;
+
+  /* Radii */
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-base: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-xl2: 16px;
+  --radius-full: 9999px;
+
+  /* Layout */
+  --max-hero: 1200px;
+  --max-search: 896px;
+  --max-chat: 800px;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-dropdown: 200ms;
+  --duration-screen: 300ms;
+}
+
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: "Plus Jakarta Sans", system-ui, sans-serif; background: #fff; color: var(--ui-body); }
+      header.top { display: flex; align-items: center; gap: 16px; padding: 14px 32px; border-bottom: 1px solid var(--ui-border-faint); }
+      header.top h1 { margin: 0; font-size: 17px; color: var(--brand-navy-deep); }
+      header.top .spacer { flex: 1; }
+      .back { display: grid; place-items: center; width: 36px; height: 36px; margin-left: -8px; border-radius: 50%; color: var(--brand-navy-deep); }
+      .back:hover { background: var(--ui-bg-input); }
+      .status { font-size: 13px; color: var(--ui-muted-dark); }
+      .status.is-dirty { color: #b45309; }
+      .status.is-busy { color: var(--accent-indigo); }
+      .status.is-ok { color: var(--brand-green); }
+      main { max-width: 1180px; margin: 0 auto; padding: 20px 32px 80px; }
+      .tabs { display: flex; gap: 20px; border-bottom: 1px solid var(--ui-border-faint); margin-bottom: 18px; }
+      .tabs button { padding: 8px 0 10px; border: 0; border-bottom: 2px solid transparent; background: none; color: var(--ui-muted-dark); font: 600 14px "Plus Jakarta Sans", system-ui, sans-serif; cursor: pointer; }
+      .tabs button[aria-selected="true"] { color: var(--brand-navy-deep); border-bottom-color: var(--brand-navy-deep); }
+      .paste { margin-bottom: 20px; }
+      .paste textarea { width: 100%; height: 88px; resize: vertical; padding: 10px 12px; border: 1px solid var(--ui-border-light); border-radius: 8px; font: 14px/1.5 "Plus Jakarta Sans", system-ui, sans-serif; color: var(--ui-body); }
+      .paste .bar { display: flex; align-items: center; gap: 12px; margin-top: 8px; font-size: 13px; color: var(--ui-muted-dark); }
+      .paste select { height: 32px; border: 1px solid var(--ui-border-light); border-radius: 8px; background: #fff; font: 13px "Plus Jakarta Sans", system-ui, sans-serif; padding: 0 8px; }
+      .meta { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; font-size: 13px; color: var(--ui-muted-dark); }
+      .meta audio { height: 32px; }
+      .meta a { color: var(--brand-navy-deep); font-weight: 600; }
+      .grid-head, .row { display: grid; grid-template-columns: 28px 28px minmax(0, 1fr) minmax(0, 1fr) 28px; gap: 14px; align-items: start; }
+      .grid-head { padding: 8px 0; border-bottom: 1px solid var(--ui-border-light); font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ui-muted); }
+      .row { padding: 8px 0; border-bottom: 1px solid var(--ui-border-faint); position: relative; }
+      .row.drop-above { box-shadow: 0 -2px 0 var(--accent-indigo); }
+      .row.drop-below { box-shadow: 0 2px 0 var(--accent-indigo); }
+      .row.dragging { opacity: .4; }
+      .row .num { padding-top: 8px; font-size: 12px; font-weight: 700; color: var(--ui-muted); text-align: right; }
+      .row .grip { padding-top: 6px; font-size: 16px; color: var(--ui-muted); cursor: grab; user-select: none; text-align: center; }
+      .row textarea { display: block; width: 100%; min-height: 38px; resize: none; overflow: hidden; padding: 7px 8px; border: 1px solid transparent; border-radius: 6px; background: transparent; font: 14px/1.5 "Plus Jakarta Sans", system-ui, sans-serif; color: var(--ui-body); }
+      .row textarea:hover { border-color: var(--ui-border-faint); }
+      .row textarea:focus { outline: none; border-color: var(--accent-indigo); background: #fff; }
+      .row .del { width: 28px; height: 28px; margin-top: 5px; border: 0; border-radius: 6px; background: none; color: var(--ui-muted); font-size: 18px; line-height: 1; cursor: pointer; }
+      .row .del:hover { background: var(--ui-bg-input); color: #b91c1c; }
+      .add { margin-top: 10px; padding: 8px 0; border: 0; background: none; color: var(--brand-navy-deep); font: 600 13px "Plus Jakarta Sans", system-ui, sans-serif; cursor: pointer; }
+      .btn { height: 36px; padding: 0 16px; border: 0; border-radius: 999px; background: var(--brand-navy-deep); color: #fff; font: 600 13px "Plus Jakarta Sans", system-ui, sans-serif; cursor: pointer; }
+      .btn:disabled { opacity: .45; cursor: default; }
+      .btn.ghost { background: #fff; color: var(--ui-body); border: 1px solid var(--ui-border-light); }
+      .note { margin-top: 24px; font-size: 12px; color: var(--ui-muted-dark); line-height: 1.6; }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <a href="index.html" aria-label="Back to walkthrough" title="Back to walkthrough" class="back"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></a>
+      <h1>Walkthrough audio</h1>
+      <span class="status" id="status" role="status">All changes saved</span>
+      <span class="spacer"></span>
+      <button class="btn ghost" id="genall" type="button">Generate missing audio</button>
+      <button class="btn ghost" id="reset" type="button">Reset to defaults</button>
+      <button class="btn" id="save" type="button" disabled>Save &amp; generate audio</button>
+    </header>
+    <main>
+      <div class="tabs" id="tabs" role="tablist"></div>
+      <section class="paste">
+        <textarea id="paste" placeholder="Paste a whole script here. Add “// what happens on screen” after a sentence to fill the behavior column too."></textarea>
+        <div class="bar">
+          <button class="btn ghost" id="split" type="button">Split into lines</button>
+          <label>Sentences per line
+            <select id="per"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+          </label>
+        </div>
+      </section>
+      <div class="meta" id="meta"></div>
+      <div class="grid-head"><span></span><span></span><span>Voice script</span><span>On-screen behavior</span><span></span></div>
+      <div id="rows"></div>
+      <button class="add" id="add" type="button">+ Add line</button>
+      <p class="note">Demo data only. Saving here just stores the script in this browser and pretends to generate audio. The next step is to connect the text-to-speech service, so each save renders the audio and updates the walkthrough timing and cues.</p>
+    </main>
+    <script>
+/* Dummy manage UI for the walkthrough voice scripts.
+   Edits are kept in localStorage; "Save" fakes audio generation. */
+(function () {
+  const STORE = "nl-demo-scripts-v1";
+
+  const DEFAULTS = [
+    {
+      id: "knowledge",
+      name: "Knowledge article demo",
+      audio: "knowledge dub.mp3",
+      page: "article.html?id=respond-dispute&demo=1",
+      lines: [
+        { voice: "Customers often arrive at a knowledge article that is related to their issue, but not exactly what they need.", behavior: "Start on the Google search results. The customer clicks the Northline result and lands on the knowledge article. The AI summary shows a general summary of the article." },
+        { voice: "Even when the answer exists somewhere in the article, customers may struggle to identify which information applies to their specific situation.", behavior: "Scroll down over the long article." },
+        { voice: "With AI Zone, we can turn a static knowledge article into a dynamic, personalized experience.", behavior: "Scroll back to the top. The customer clicks the AI Helper box." },
+        { voice: "Here, the customer is reading about bank disputes.", behavior: "The customer types a question into the AI Helper: “Why hasn’t my refund arrived?”" },
+        { voice: "Instead of reading through the entire article, they simply ask why their refund hasn’t arrived.", behavior: "Send the question. The summary regenerates to match it, using data from the customer’s account." },
+        { voice: "The AI helper understands the customer’s question and generates a focused summary using the relevant knowledge content.", behavior: "Cursor browses the new summary, then hovers source 1 to show the knowledge snippet preview." },
+        { voice: "Notice that we’re not just summarizing the article.", behavior: "Cursor moves back over the summary text." },
+        { voice: "We’re highlighting the information that matters to this customer, based on their specific situation.", behavior: "Cursor hovers source 2 to show its snippet preview." },
+        { voice: "This helps customers understand the next step faster, without needing to search through multiple articles or contact a support agent.", behavior: "Cursor rests near the summary. The walkthrough ends." }
+      ]
+    },
+    {
+      id: "case",
+      name: "Case + automation demo",
+      audio: "case dub.mp3",
+      page: "submit.html?demo=1",
+      lines: [
+        { voice: "Now let’s look at a different challenge.", behavior: "Case page is shown." },
+        { voice: "Customers often submit support cases for issues that could be resolved through self-service.", behavior: "AI Zone shows general case turnaround information. No action button." },
+        { voice: "Here, a customer is reporting a duplicate charge and preparing to submit a case.", behavior: "Name, email and topic are filled. The customer enters the subject and description." },
+        { voice: "As the customer types, AI Zone understands the issue and provides personalized recommendations.", behavior: "AI Zone picks up what the customer typed and updates its recommendation." },
+        { voice: "Instead of waiting for an agent, AI offers a faster path to request a refund.", behavior: "A “Request the refund” button appears." },
+        { voice: "With one click, the customer moves directly into the refund process.", behavior: "The customer clicks “Request the refund” and goes to the automation screen." },
+        { voice: "AI carries over the customer’s information and automatically fills out the refund form.", behavior: "The refund form is pre-filled with the customer and transaction details. Completed fields are highlighted." },
+        { voice: "The customer simply reviews the details and submits the request.", behavior: "The customer reviews the form and clicks “Submit request”." },
+        { voice: "The automation processes the refund without agent involvement.", behavior: "Automation runs and shows a processing status." },
+        { voice: "And the refund is successfully completed.", behavior: "Success confirmation shows the refund amount and status." },
+        { voice: "What could have been another support ticket is now a completed self-service resolution.", behavior: "Hold on the success screen. The walkthrough ends." }
+      ]
+    }
+  ];
+
+  function safeGet() { try { return localStorage.getItem(STORE); } catch (e) { return null; } }
+  function safeSet(value) { try { if (value === null) localStorage.removeItem(STORE); else localStorage.setItem(STORE, value); } catch (e) { /* storage unavailable in a sandboxed preview */ } }
+
+  const clone = (value) => JSON.parse(JSON.stringify(value));
+  let saved = load();
+  let data = clone(saved);
+  let current = 0;
+  let busy = false;
+
+  const $ = (id) => document.getElementById(id);
+  const rowsEl = $("rows");
+  const statusEl = $("status");
+  const saveBtn = $("save");
+
+  function load() {
+    try {
+      const stored = JSON.parse(safeGet() || "null");
+      if (Array.isArray(stored) && stored.length === DEFAULTS.length) return stored;
+    } catch (e) { /* fall through */ }
+    return clone(DEFAULTS);
+  }
+
+  const esc = (text) => String(text).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const isDirty = () => JSON.stringify(data) !== JSON.stringify(saved);
+
+  function setStatus(text, kind) {
+    statusEl.textContent = text;
+    statusEl.className = `status ${kind || ""}`;
+  }
+
+  function refreshState() {
+    const dirty = isDirty();
+    saveBtn.disabled = !dirty || busy;
+    if (!busy) setStatus(dirty ? "Unsaved changes" : "All changes saved", dirty ? "is-dirty" : "");
+  }
+
+  function seconds(text) {
+    const words = text.trim().split(/\s+/).filter(Boolean).length;
+    return (words / 2.6).toFixed(1);
+  }
+
+  function renderTabs() {
+    $("tabs").innerHTML = data
+      .map((demo, i) => `<button type="button" role="tab" aria-selected="${i === current}" data-tab="${i}">${esc(demo.name)}</button>`)
+      .join("");
+  }
+
+  function renderMeta() {
+    const demo = data[current];
+    const total = demo.lines.reduce((sum, line) => sum + Number(seconds(line.voice)), 0).toFixed(0);
+    $("meta").innerHTML = `
+      <audio controls preload="none" src="${encodeURI(demo.audio)}"></audio>
+      <span>Current audio: ${esc(demo.audio)} · estimated new length ~${total}s</span>
+      <a href="${esc(demo.page)}">Open walkthrough ↗</a>`;
+  }
+
+  function renderRows() {
+    const demo = data[current];
+    rowsEl.innerHTML = demo.lines
+      .map((line, i) => `
+        <div class="row" data-i="${i}">
+          <span class="grip" draggable="true" title="Drag to reorder" aria-label="Drag to reorder">⋮⋮</span>
+          <span class="num">${i + 1}</span>
+          <textarea data-field="voice" rows="1" aria-label="Voice script, line ${i + 1}">${esc(line.voice)}</textarea>
+          <textarea data-field="behavior" rows="1" aria-label="On-screen behavior, line ${i + 1}">${esc(line.behavior)}</textarea>
+          <button type="button" class="del" data-act="remove" aria-label="Remove line ${i + 1}" title="Remove line">×</button>
+        </div>`)
+      .join("");
+    rowsEl.querySelectorAll("textarea").forEach(grow);
+  }
+
+  function grow(el) {
+    el.style.height = "auto";
+    el.style.height = `${el.scrollHeight + 2}px`;
+  }
+
+  function render() {
+    renderTabs();
+    renderMeta();
+    renderRows();
+    refreshState();
+  }
+
+  $("tabs").addEventListener("click", (event) => {
+    const tab = event.target.closest("[data-tab]");
+    if (!tab || busy) return;
+    current = Number(tab.dataset.tab);
+    render();
+  });
+
+  rowsEl.addEventListener("input", (event) => {
+    const field = event.target.dataset.field;
+    const row = event.target.closest(".row");
+    if (!field || !row) return;
+    const i = Number(row.dataset.i);
+    data[current].lines[i][field] = event.target.value;
+    if (field === "voice") delete data[current].lines[i].audio;
+    grow(event.target);
+    if (field === "voice") renderMeta();
+    refreshState();
+  });
+
+  rowsEl.addEventListener("click", (event) => {
+    const button = event.target.closest('[data-act="remove"]');
+    const row = event.target.closest(".row");
+    if (!button || !row || busy) return;
+    const lines = data[current].lines;
+    if (lines.length === 1) return;
+    lines.splice(Number(row.dataset.i), 1);
+    render();
+  });
+
+  // Drag a row by its handle to reorder.
+  let dragFrom = -1;
+  const clearDrop = () => rowsEl.querySelectorAll(".row").forEach((r) => r.classList.remove("drop-above", "drop-below", "dragging"));
+  rowsEl.addEventListener("dragstart", (event) => {
+    const grip = event.target.closest(".grip");
+    const row = event.target.closest(".row");
+    if (!grip || !row) return;
+    dragFrom = Number(row.dataset.i);
+    event.dataTransfer.effectAllowed = "move";
+    event.dataTransfer.setData("text/plain", String(dragFrom));
+    event.dataTransfer.setDragImage(row, 20, 20);
+    row.classList.add("dragging");
+  });
+  rowsEl.addEventListener("dragover", (event) => {
+    const row = event.target.closest(".row");
+    if (!row || dragFrom < 0) return;
+    event.preventDefault();
+    const rect = row.getBoundingClientRect();
+    const below = event.clientY > rect.top + rect.height / 2;
+    rowsEl.querySelectorAll(".row").forEach((r) => r.classList.remove("drop-above", "drop-below"));
+    row.classList.add(below ? "drop-below" : "drop-above");
+  });
+  rowsEl.addEventListener("drop", (event) => {
+    const row = event.target.closest(".row");
+    if (!row || dragFrom < 0) return;
+    event.preventDefault();
+    const rect = row.getBoundingClientRect();
+    let to = Number(row.dataset.i) + (event.clientY > rect.top + rect.height / 2 ? 1 : 0);
+    const lines = data[current].lines;
+    const [moved] = lines.splice(dragFrom, 1);
+    if (dragFrom < to) to -= 1;
+    lines.splice(to, 0, moved);
+    dragFrom = -1;
+    render();
+  });
+  rowsEl.addEventListener("dragend", () => { dragFrom = -1; clearDrop(); });
+
+  $("add").addEventListener("click", () => {
+    if (busy) return;
+    data[current].lines.push({ voice: "", behavior: "" });
+    render();
+    const rows = rowsEl.querySelectorAll(".row");
+    rows[rows.length - 1]?.querySelector("textarea")?.focus();
+  });
+
+  /* ---- paste a paragraph, cut it into lines ---- */
+  function splitSentences(text) {
+    const guard = text
+      .replace(/(\d)\.(\d)/g, "$1\u0001$2")
+      .replace(/\b(Mr|Mrs|Ms|Dr|vs|etc|e\.g|i\.e)\./gi, "$1\u0001");
+    return guard
+      .split(/(?<=[.!?…])["”’)]*\s+(?=["“‘(]?[A-Z0-9$])/)
+      .map((part) => part.replace(/\u0001/g, ".").trim())
+      .filter(Boolean);
+  }
+
+  function smartSplit(raw, perLine) {
+    const lines = [];
+    raw.split(/\n+/).map((row) => row.trim()).filter(Boolean).forEach((row) => {
+      // "Sentence one. Sentence two. // what happens on screen"
+      const at = row.indexOf("//");
+      const voice = (at >= 0 ? row.slice(0, at) : row).trim();
+      const behavior = at >= 0 ? row.slice(at + 2).trim() : "";
+      const sentences = splitSentences(voice);
+      const wordCount = (t) => t.split(/\s+/).length;
+      const merged = [];
+      sentences.forEach((sentence) => {
+        const last = merged[merged.length - 1];
+        // glue tiny fragments onto the previous sentence
+        if (last && wordCount(sentence) < 3) merged[merged.length - 1] = `${last} ${sentence}`;
+        else merged.push(sentence);
+      });
+      for (let i = 0; i < merged.length; i += perLine) {
+        lines.push({ voice: merged.slice(i, i + perLine).join(" "), behavior: i + perLine >= merged.length ? behavior : "" });
+      }
+    });
+    return lines;
+  }
+
+  $("split").addEventListener("click", () => {
+    const raw = $("paste").value.trim();
+    if (!raw || busy) return;
+    const lines = smartSplit(raw, Number($("per").value));
+    if (!lines.length) return;
+    const existing = data[current].lines.some((line) => line.voice.trim() || line.behavior.trim());
+    if (existing && !window.confirm("Replace the current lines with the pasted script?")) return;
+    data[current].lines = lines;
+    $("paste").value = "";
+    render();
+  });
+
+  const voiceKey = (demo) => JSON.stringify(demo.lines.map((line) => line.voice.trim()));
+
+  async function apiReady() {
+    try {
+      const r = await fetch("/api/status");
+      const j = await r.json();
+      return Boolean(j.key && j.voice);
+    } catch (e) { return false; }
+  }
+
+  async function generateLine(line) {
+    const r = await fetch("/api/generate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: line.voice.trim() }) });
+    const j = await r.json();
+    if (!r.ok) throw new Error(j.error || `HTTP ${r.status}`);
+    line.audio = { id: j.id, url: j.url, duration: j.duration, words: j.words };
+  }
+
+  saveBtn.addEventListener("click", async () => {
+    if (busy || !isDirty()) return;
+    busy = true;
+    saveBtn.disabled = true;
+    // Diff against the last save: only lines with new or edited spoken text need audio.
+    // Unchanged lines (even if moved) keep whatever audio they already had, and
+    // behavior-only edits never call the API.
+    const todo = [];
+    data.forEach((demo, d) => {
+      const before = new Map();
+      saved[d].lines.forEach((line) => before.set(line.voice.trim(), line.audio));
+      demo.lines.forEach((line) => {
+        const text = line.voice.trim();
+        if (!text || line.audio) return;
+        if (before.has(text)) { if (before.get(text)) line.audio = before.get(text); return; }
+        todo.push(line);
+      });
+    });
+    let note = "behavior saved";
+    try {
+      if (todo.length) {
+        if (await apiReady()) {
+          for (let i = 0; i < todo.length; i += 1) {
+            setStatus(`Generating audio ${i + 1} of ${todo.length}…`, "is-busy");
+            await generateLine(todo[i]);
+          }
+          note = `${todo.length} audio line${todo.length === 1 ? "" : "s"} generated`;
+        } else {
+          setStatus("Generating audio…", "is-busy");
+          await new Promise((resolve) => window.setTimeout(resolve, 1200));
+          note = "audio skipped: open this page from node server.js to generate";
+        }
+      }
+      safeSet(JSON.stringify(data));
+      saved = clone(data);
+      refreshState();
+      setStatus(`Saved ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })} · ${note}`, "is-ok");
+    } catch (e) {
+      setStatus(`Could not generate audio: ${e.message}`.slice(0, 160), "is-dirty");
+    } finally {
+      busy = false;
+      saveBtn.disabled = !isDirty();
+    }
+  });
+
+  $("genall").addEventListener("click", async () => {
+    if (busy) return;
+    busy = true;
+    saveBtn.disabled = true;
+    const todo = [];
+    data.forEach((demo) => demo.lines.forEach((line) => { if (line.voice.trim() && !line.audio) todo.push(line); }));
+    try {
+      if (!todo.length) { setStatus("Every line already has audio", "is-ok"); return; }
+      if (!(await apiReady())) { setStatus("Open this page from node server.js to generate audio", "is-dirty"); return; }
+      for (let i = 0; i < todo.length; i += 1) {
+        setStatus(`Generating audio ${i + 1} of ${todo.length}…`, "is-busy");
+        await generateLine(todo[i]);
+      }
+      safeSet(JSON.stringify(data));
+      saved = clone(data);
+      setStatus(`Saved · ${todo.length} audio line${todo.length === 1 ? "" : "s"} generated`, "is-ok");
+    } catch (e) {
+      setStatus(`Could not generate audio: ${e.message}`.slice(0, 160), "is-dirty");
+    } finally {
+      busy = false;
+      refreshState();
+    }
+  });
+
+  $("reset").addEventListener("click", () => {
+    if (busy || !window.confirm("Reset both scripts to the original text?")) return;
+    data = clone(DEFAULTS);
+    saved = clone(DEFAULTS);
+    safeSet(null);
+    render();
+  });
+
+  window.addEventListener("beforeunload", (event) => {
+    if (isDirty()) { event.preventDefault(); event.returnValue = ""; }
+  });
+
+  render();
+})();
+
+    </script>
+  </body>
+</html>
